@@ -1,0 +1,20 @@
+---
+title: កំណត់ហេតុនៃការផ្លាស់ប្តូរ (Changelog)
+description: ប្រវត្តិនៃការបញ្ចេញកំណែ ការធ្វើបច្ចុប្បន្នភាព និងការកែលម្អសម្រាប់ AGX Kit។
+---
+
+import { Badge } from '@astrojs/starlight/components';
+
+ប្រវត្តិកំណែ និងកំណត់ហេតុផ្លាស់ប្តូរសម្រាប់ AGX Kit។
+
+---
+
+## 2026.11.28 — 2026-11-28 <Badge text="Baseline" variant="tip" />
+
+> កំណែមូលដ្ឋានថ្មី 2026.11.28: AGX Kit បែប Antigravity-native (24 ភ្នាក់ងារ, 56 ជំនាញ, 16 workflows, 7 rules), បម្លាស់ប្តូរទាំងស្រុងទៅ Bun, ឯកសារ Astro Starlight ពីរភាសា (EN/KM) ជាមួយ TypeScript 7.1 content mapper និងការដាក់ឱ្យដំណើរការលើ Cloudflare Pages។
+
+### បានបន្ថែម (Added)
+- **មូលដ្ឋាន Antigravity-Native:** កិច្ចសន្យា workspace `.agents/` ពេញលេញ រួមមាន **24 ភ្នាក់ងារឯកទេស**, **56 ជំនាញ**, **16 Workflows**, **7 Rules**, អង្គចងចាំយូរអង្វែង, ឧបករណ៍ MCP sync, native `PreToolUse` safety hook, Antigravity Doctor និង plugin bundle builder។
+- **Bun Runtime និងឧបករណ៍:** ធ្វើស្តង់ដារការគ្រប់គ្រងកញ្ចប់ (`bun.lock`), scripts, hooks, CI workflows, Dependabot និងតេស្ត `bun:test` លើ Bun សម្រាប់ root, `cli/` និង `web/`។
+- **ឯកសារ Astro Starlight (`web/`):** រចនាម៉ូត Vantage Graphite, ការស្វែងរក Pagefind, ភាសាអង់គ្លេស + ខ្មែរ (`/km/`) ជាមួយពុម្ពអក្សរ Kantumruy Pro, TypeScript 7.1 + `@astrojs/ts-content-mapper` និង Cloudflare Pages។
+- **CLI ប្រកបដោយសុវត្ថិភាព (`cli/`):** `@houching/agx-kit` ជាមួយពាក្យបញ្ជា `init`, `update`, `rollback` និង `status`, ភាពឆបគ្នាជាមួយ Node.js 18+ និង Bun និង npm OIDC Trusted Publishing។

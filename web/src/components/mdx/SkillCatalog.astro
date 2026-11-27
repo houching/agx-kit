@@ -1,0 +1,58 @@
+---
+import skillsData from '../../data/skills.json';
+
+const categoryOrder = [
+  "Frontend & UI",
+  "Backend & API",
+  "Database",
+  "Cloud & Infrastructure",
+  "Testing & Quality",
+  "Security",
+  "Architecture & Planning",
+  "Mobile",
+  "Game Development",
+  "SEO & Growth",
+  "Shell/CLI",
+  "Orchestration & Memory",
+  "Other"
+];
+
+// Group skills
+const skillsByCategory = skillsData.reduce((acc, skill) => {
+  const cat = skill.category || "Other";
+  if (!acc[cat]) {
+    acc[cat] = [];
+  }
+  acc[cat].push(skill);
+  return acc;
+}, {} as Record<string, typeof skillsData>);
+
+const categories = [
+  ...categoryOrder.filter(cat => skillsByCategory[cat]?.length),
+  ...Object.keys(skillsByCategory).filter(cat => !categoryOrder.includes(cat))
+];
+---
+
+<div class="not-content space-y-8 my-6">
+  {categories.map((category) => (
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-amber-400 mb-3 flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+        {category}
+        <span class="text-xs text-[var(--v-text-2)] font-mono font-normal">({skillsByCategory[category].length})</span>
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {skillsByCategory[category].map((skill) => (
+          <div class="p-3.5 rounded-xl border border-[var(--v-line)] bg-[var(--v-surface)] hover:border-amber-500/30 transition-colors">
+            <div class="font-mono text-xs font-semibold text-[var(--v-text-1)] mb-1">
+              @{skill.name}
+            </div>
+            <p class="text-xs text-[var(--v-text-2)] m-0 leading-relaxed">
+              {skill.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>

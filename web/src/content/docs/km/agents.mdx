@@ -1,0 +1,78 @@
+---
+title: តួអង្គឆ្លាតវៃ (Agents)
+description: តួអង្គ AI ឯកទេសដែលត្រូវបានកំណត់រចនាសម្ព័ន្ធជាមួយជំនាញជ្រៅជ្រះ ឧបករណ៍ និងលំនាំឥរិយាបថជាក់លាក់។
+---
+
+import { Callout, Terminal, TerminalLine, TerminalBlock, AgentCatalog } from '@/components/mdx';
+
+តួអង្គ AI ឯកទេសដែលមានជំនាញជ្រៅជ្រះក្នុងដែនកំណត់ជាក់លាក់។
+
+---
+
+## តើអ្វីជា Agents? (What are Agents?)
+
+Agents គឺជាតួអង្គ AI ឯកទេសដែលត្រូវបានរៀបចំឡើងជាមួយជំនាញតាមផ្នែក ឧបករណ៍ចាំបាច់ និងលំនាំឥរិយាបថស្តង់ដារ។ Agent នីមួយៗត្រូវបានរចនាឡើងដើម្បីពូកែលើផ្នែកណាមួយជាក់លាក់នៃការអភិវឌ្ឍកម្មវិធី។
+
+នៅពេលអ្នកដាក់សំណើ ប្រព័ន្ធ **Intelligent Routing** របស់ AGX Kit នឹងស្វែងរក និងដំណើរការ agent ដែលត្រូវគ្នានឹងតម្រូវការដោយស្វ័យប្រវត្តិ។ អ្នកក៏អាចហៅឈ្មោះ agent ផ្ទាល់ដើម្បីបង្ខំឱ្យប្រើទស្សនៈជាក់លាក់ណាមួយបានផងដែរ។
+
+---
+
+## របៀបប្រើប្រាស់ Agents (How to Use Agents)
+
+**មិនចាំបាច់ហៅឈ្មោះ agent ដោយផ្ទាល់នោះទេ!** ប្រព័ន្ធនឹងរកឃើញ និងជ្រើសរើសអ្នកជំនាញដែលស័ក្តិសមដោយស្វ័យប្រវត្តផ្អែកលើសំណើរបស់អ្នក៖
+
+<Terminal>
+  <TerminalLine type="user">Add JWT authentication</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs text-teal-400">🤖 កំពុងដំណើរការចំណេះដឹងរបស់ @security-auditor + @backend-specialist...</div>
+  </TerminalBlock>
+
+  <TerminalLine type="user">Fix the dark mode button</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs text-teal-400">🤖 កំពុងប្រើប្រាស់ @frontend-specialist...</div>
+  </TerminalBlock>
+
+  <TerminalLine type="user">Login returns 500 error</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs text-teal-400">🤖 កំពុងប្រើប្រាស់ @debugger សម្រាប់ការវិភាគជាប្រព័ន្ធ...</div>
+  </TerminalBlock>
+</Terminal>
+
+ទោះយ៉ាងណាក៏ដោយ អ្នក **នៅតែអាចកំណត់ដោយផ្ទាល់** បានប្រសិនបើចង់បាន៖
+
+```text
+ប្រើប្រាស់ agent security-auditor ដើម្បីពិនិត្យមើលផ្ទៀងផ្ទាត់ Authentication...
+```
+
+<Callout type="tip" title="ការធ្វើការងារជាក្រុម & Orchestration">
+  Agent អាចសហការគ្នាបាន! ប្រើប្រាស់ agent <code>orchestrator</code> ដើម្បីសម្របសម្រួលអ្នកជំនាញជាច្រើនក្នុងកិច្ចការស្មុគស្មាញ។
+</Callout>
+
+---
+
+## បញ្ជី Agents ដែលមានស្រាប់ (Available Agents)
+
+AGX Kit រួមបញ្ចូល **Specialist Agents ទាំងអស់ចំនួន 25**៖
+
+<AgentCatalog />
+
+---
+
+## រចនាសម្ព័ន្ធរបស់ Agent (Agent Structure)
+
+Agent នីមួយៗត្រូវបានកំណត់តាមរយៈឯកសារ markdown ជាមួយ YAML frontmatter៖
+
+```markdown
+---
+name: frontend-specialist
+description: Frontend architect expert
+tools: Read, Edit, Write, Bash
+skills: nextjs-react-expert, tailwind-patterns, frontend-design
+---
+
+# Frontend Specialist
+
+You are a senior frontend architect...
+```
+
+ប្រអប់ `skills` កំណត់ថាតើ agent អាចចូលប្រើប្រាស់ម៉ូឌុលចំណេះដឹងណាខ្លះ។

@@ -1,0 +1,282 @@
+[
+    {
+        "name": "api-patterns",
+        "description": "Domain skill for api-patterns",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "app-builder",
+        "description": "Domain skill for app-builder",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "architecture",
+        "description": "Domain skill for architecture",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "bash-linux",
+        "description": "Domain skill for bash-linux",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "batch-operations",
+        "description": "Domain skill for batch-operations",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "behavioral-modes",
+        "description": "Domain skill for behavioral-modes",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "brainstorming",
+        "description": "Domain skill for brainstorming",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "clean-code",
+        "description": "Domain skill for clean-code",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "code-review-checklist",
+        "description": "Domain skill for code-review-checklist",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "code-review-graph",
+        "description": "Domain skill for code-review-graph",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "context-compression",
+        "description": "Domain skill for context-compression",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "coordinator-mode",
+        "description": "Domain skill for coordinator-mode",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "darkcode",
+        "description": "Domain skill for darkcode",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "database-design",
+        "description": "Domain skill for database-design",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "deployment-procedures",
+        "description": "Domain skill for deployment-procedures",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "design-spec",
+        "description": "Domain skill for design-spec",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "documentation-templates",
+        "description": "Domain skill for documentation-templates",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "frontend-architecture",
+        "description": "Domain skill for frontend-architecture",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "frontend-design",
+        "description": "Domain skill for frontend-design",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "game-development",
+        "description": "Domain skill for game-development",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "geo-fundamentals",
+        "description": "Domain skill for geo-fundamentals",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "go-pro",
+        "description": "Domain skill for go-pro",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "gpui",
+        "description": "Domain skill for gpui",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "i18n-localization",
+        "description": "Domain skill for i18n-localization",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "intelligent-routing",
+        "description": "Domain skill for intelligent-routing",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "lightpanda",
+        "description": "Domain skill for lightpanda",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "lint-and-validate",
+        "description": "Domain skill for lint-and-validate",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "logo-design",
+        "description": "Domain skill for logo-design",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "mcp-builder",
+        "description": "Domain skill for mcp-builder",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "memory-system",
+        "description": "Domain skill for memory-system",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "mobile-design",
+        "description": "Domain skill for mobile-design",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "nextjs-react-expert",
+        "description": "Domain skill for nextjs-react-expert",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "nodejs-best-practices",
+        "description": "Domain skill for nodejs-best-practices",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "parallel-agents",
+        "description": "Domain skill for parallel-agents",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "performance-profiling",
+        "description": "Domain skill for performance-profiling",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "plan-writing",
+        "description": "Domain skill for plan-writing",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "powershell-windows",
+        "description": "Domain skill for powershell-windows",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "python-patterns",
+        "description": "Domain skill for python-patterns",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "rea",
+        "description": "Domain skill for rea",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "red-team-tactics",
+        "description": "Domain skill for red-team-tactics",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "rust-pro",
+        "description": "Domain skill for rust-pro",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "scrapling",
+        "description": "Domain skill for scrapling",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "seo-fundamentals",
+        "description": "Domain skill for seo-fundamentals",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "server-management",
+        "description": "Domain skill for server-management",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "simplify-code",
+        "description": "Domain skill for simplify-code",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "skillify",
+        "description": "Domain skill for skillify",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "spec-driven-dev",
+        "description": "Domain skill for spec-driven-dev",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "systematic-debugging",
+        "description": "Domain skill for systematic-debugging",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "tailwind-patterns",
+        "description": "Domain skill for tailwind-patterns",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "tdd-workflow",
+        "description": "Domain skill for tdd-workflow",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "testing-patterns",
+        "description": "Domain skill for testing-patterns",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "vantage-design-system",
+        "description": "Domain skill for vantage-design-system",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "verify-changes",
+        "description": "Domain skill for verify-changes",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "vulnerability-scanner",
+        "description": "Domain skill for vulnerability-scanner",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "web-design-guidelines",
+        "description": "Domain skill for web-design-guidelines",
+        "category": "Core & Domain"
+    },
+    {
+        "name": "webapp-testing",
+        "description": "Domain skill for webapp-testing",
+        "category": "Core & Domain"
+    }
+]

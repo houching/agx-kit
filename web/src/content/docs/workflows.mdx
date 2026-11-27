@@ -1,0 +1,58 @@
+﻿---
+title: Workflows
+description: Slash command procedures for common development tasks.
+---
+
+import { Callout, Terminal, TerminalLine, WorkflowCatalog } from '@/components/mdx';
+
+Slash command procedures for common development tasks.
+
+---
+
+## What are Workflows?
+
+Workflows are well-defined, step-by-step procedures for achieving specific development tasks. They're invoked using slash commands and provide consistent, repeatable processes.
+
+Each workflow contains specific instructions, decision points, and best practices for its domain.
+
+---
+
+## How to Use Workflows
+
+Simply type a slash command followed by your task description:
+
+<Terminal>
+  <TerminalLine type="user">/brainstorm authentication system</TerminalLine>
+  <TerminalLine type="user">/create landing page with hero section</TerminalLine>
+  <TerminalLine type="user">/debug why login fails</TerminalLine>
+</Terminal>
+
+<Callout type="tip" title="Turbo Execution">
+  Some workflows support a <code>// turbo</code> annotation that allows auto-running safe commands without repeated manual approval.
+</Callout>
+
+---
+
+## Available Workflows
+
+AGX Kit includes **16 standardized workflows**:
+
+<WorkflowCatalog />
+
+---
+
+## Workflow Structure
+
+Each workflow is defined in `.agents/workflows/<command>.md`:
+
+```markdown
+---
+description: Structured ideation and architectural evaluation
+---
+
+# /brainstorm
+
+1. Socratic exploration (3+ alternatives)
+2. Trade-off matrix (pros, cons, effort)
+3. User decision gate
+```

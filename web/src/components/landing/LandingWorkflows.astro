@@ -1,0 +1,129 @@
+---
+interface Props {
+  lang?: "en" | "km";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = {
+  en: {
+    eyebrow: "Workflows",
+    title: "Commands that execute your process",
+    subtitle: "Slash workflows turn implicit knowledge into repeatable agent sessions.",
+    core: "Core",
+    browseAll: "Browse all workflows",
+    items: [
+      {
+        title: "/brainstorm",
+        description: "Explore multiple approaches with trade-offs before you write code.",
+        href: "/guide/brainstorm/",
+      },
+      {
+        title: "/plan",
+        description: "Deconstruct features into tasks, dependencies, and verification criteria.",
+        href: "/guide/plan/",
+      },
+      {
+        title: "/create",
+        description: "Scaffold full-stack applications from natural language requests.",
+        href: "/guide/create/",
+      },
+      {
+        title: "/debug",
+        description: "Systematic root cause analysis with evidence-based verification.",
+        href: "/guide/debugging/",
+      },
+      {
+        title: "/orchestrate",
+        description: "Coordinate parallel specialist agents on complex multi-domain work.",
+        href: "/guide/orchestration/",
+      },
+      {
+        title: "/deploy",
+        description: "Production-ready release procedure with rollback safety.",
+        href: "/guide/deployment/",
+        highlight: true,
+      },
+    ],
+    browseHref: "/workflows/",
+  },
+  km: {
+    eyebrow: "លំហូរការងារ",
+    title: "ពាក្យបញ្ជាដែលដំណើរការតាមនីតិវិធី",
+    subtitle: "Slash workflows បំប្លែងចំណេះដឹងដែលមិនបានកត់ត្រា ទៅជាវគ្គការងារ AI ដែលអាចធ្វើឡើងវិញបានយ៉ាងជាក់លាក់។",
+    core: "ស្នូល",
+    browseAll: "មើលលំហូរការងារទាំងអស់",
+    items: [
+      {
+        title: "/brainstorm",
+        description: "ស្វែងយល់ពីវិធីសាស្រ្តជាច្រើនជាមួយនឹងគុណសម្បត្តិ និងគុណវិបត្តិមុនពេលអ្នកសរសេរកូដ។",
+        href: "/km/guide/brainstorm/",
+      },
+      {
+        title: "/plan",
+        description: "បំបែកមុខងារទៅជាកិច្ចការ ភាពអាស្រ័យ និងលក្ខណៈវិនិច្ឆ័យផ្ទៀងផ្ទាត់។",
+        href: "/km/guide/plan/",
+      },
+      {
+        title: "/create",
+        description: "បង្កើតគ្រោងឆ្អឹងកម្មវិធី full-stack ពីសំណើជាភាសាធម្មជាតិ។",
+        href: "/km/guide/create/",
+      },
+      {
+        title: "/debug",
+        description: "ការវិភាគរកមូលហេតុដើមជាប្រព័ន្ធ ជាមួយនឹងការផ្ទៀងផ្ទាត់ផ្អែកលើភស្តុតាងជាក់ស្តែង។",
+        href: "/km/guide/debugging/",
+      },
+      {
+        title: "/orchestrate",
+        description: "សម្របសម្រួលភ្នាក់ងារឯកទេសស្របគ្នាលើការងារស្មុគស្មាញច្រើនផ្នែក។",
+        href: "/km/guide/orchestration/",
+      },
+      {
+        title: "/deploy",
+        description: "នីតិវិធីបញ្ចេញឱ្យដំណើរការលើផលិតកម្ម ជាមួយនឹងសុវត្ថិភាព rollback។",
+        href: "/km/guide/deployment/",
+        highlight: true,
+      },
+    ],
+    browseHref: "/km/workflows/",
+  },
+}[lang];
+---
+
+<section id="workflows" class="container mx-auto px-4 py-16 sm:py-20 md:py-28 sm:px-6 lg:px-8">
+  <p class="mb-2 text-center text-lg tracking-wider text-brand font-medium">
+    {copy.eyebrow}
+  </p>
+  <h2 class="mb-4 text-center text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+    {copy.title}
+  </h2>
+  <p class="mx-auto mb-10 max-w-2xl text-center text-base sm:text-lg text-muted-foreground md:text-xl leading-relaxed">
+    {copy.subtitle}
+  </p>
+
+  <div class="mx-auto grid w-full max-w-4xl gap-4 grid-cols-1 sm:grid-cols-2">
+    {copy.items.map(({ title, description, href, highlight }) => (
+      <a href={href} class="group relative block rounded-xl border border-border bg-card p-5 sm:p-6 shadow-xs transition-colors hover:border-brand/40 no-underline">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-mono text-lg font-bold text-brand">{title}</span>
+          {highlight && (
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground border border-border">
+              {copy.core}
+            </span>
+          )}
+        </div>
+        <p class="text-sm leading-relaxed text-muted-foreground">{description}</p>
+      </a>
+    ))}
+  </div>
+
+  <div class="mt-10 flex justify-center">
+    <a
+      href={copy.browseHref}
+      class="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-border bg-card px-6 py-3 text-base font-semibold text-foreground shadow-xs hover:bg-muted transition-colors no-underline"
+    >
+      {copy.browseAll}
+    </a>
+  </div>
+</section>

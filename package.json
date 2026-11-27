@@ -1,0 +1,51 @@
+{
+  "name": "agx-kit",
+  "version": "2026.11.28",
+  "description": "Antigravity-first AI agent engineering kit with rules, skills, workflows, orchestration, MCP guidance, and safety hooks",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/houching/agx-kit.git"
+  },
+  "homepage": "https://github.com/houching/agx-kit#readme",
+  "bugs": {
+    "url": "https://github.com/houching/agx-kit/issues"
+  },
+  "keywords": [
+    "agx-kit",
+    "antigravity",
+    "ai",
+    "agent",
+    "orchestration",
+    "skills",
+    "workflows"
+  ],
+  "author": "houching",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.2"
+  },
+  "scripts": {
+    "generate:agents": "python .agents/scripts/generate_manifest.py .agents && python .agents/scripts/dependency_graph.py .agents",
+    "check:agents": "python .agents/scripts/generate_manifest.py .agents --check && python .agents/scripts/dependency_graph.py .agents --check && python .agents/scripts/validate_kit.py .agents",
+    "validate:toolkit": "python .agents/scripts/validate_kit.py .agents",
+    "test:toolkit": "python -m unittest discover -s .agents/scripts/tests -v",
+    "check:antigravity": "bun .agents/hooks/antigravity-doctor.mjs",
+    "test:antigravity": "bun test ./.agents/hooks/tests/antigravity.test.mjs",
+    "build:antigravity-plugin": "bun .agents/hooks/build-plugin.mjs",
+    "test:cli": "bun run --cwd cli test",
+    "lint:web": "bun run --cwd web lint",
+    "typecheck:web": "bun run --cwd web typecheck",
+    "build:web": "bun run --cwd web build"
+  },
+  "type": "module",
+  "bin": {
+    "agx-kit": "./cli/bin/index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.3.3",
+    "giget": "3.3.0",
+    "ora": "^8.2.0"
+  }
+}

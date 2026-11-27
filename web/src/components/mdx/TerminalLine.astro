@@ -1,0 +1,21 @@
+---
+interface Props {
+  type?: "user" | "agent" | "system";
+  command?: string;
+}
+
+const { type = "system", command } = Astro.props;
+const prompts = {
+  user: { prompt: "$", color: "text-[var(--v-brand)] font-bold" },
+  agent: { prompt: "▸", color: "text-[var(--v-brand)] font-bold" },
+  system: { prompt: "", color: "text-[var(--v-text-3)]" },
+};
+const config = prompts[type];
+---
+
+<div class="mb-2 flex items-start gap-2.5">
+  {config.prompt && <span class={`shrink-0 ${config.color}`}>{config.prompt}</span>}
+  <div class="flex-1">
+    {command ? <span class="font-mono text-[var(--v-text-1)]">{command}</span> : <slot />}
+  </div>
+</div>

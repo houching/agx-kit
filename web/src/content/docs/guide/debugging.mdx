@@ -1,0 +1,91 @@
+﻿---
+title: Systematic Debugging
+description: Solve complex issues using the rigorous /debug workflow.
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, Callout } from '@/components/mdx';
+
+Solve complex issues using the rigorous `/debug` workflow.
+
+---
+
+## Overview
+
+The `/debug` workflow enforces a **4-phase investigation protocol** (Discovery, Hypothesis, Verification, Resolution). It prevents guess-driven development by requiring evidence before code changes.
+
+<Callout type="info" title="When to use:">
+  - "The login button does nothing"
+  - "API returns 500 error intermittently"
+  - "App crashes on mobile only"
+</Callout>
+
+---
+
+## The Process
+
+<StepList>
+  <Step number={1} title="Discovery">
+    Gathers facts: Error logs, user reports, reproduction steps.
+
+    ```bash
+    /debug Login returns 403 even with correct credentials
+    ```
+  </Step>
+  <Step number={2} title="Hypothesis">
+    Formulates potential causes prioritized by likelihood.
+  </Step>
+  <Step number={3} title="Verification">
+    Systematically tests each hypothesis using scripts or logs.
+  </Step>
+  <Step number={4} title="Resolution">
+    Implements the fix and adds a regression test.
+  </Step>
+</StepList>
+
+---
+
+## Example Session
+
+<Terminal>
+  <TerminalLine type="user">/debug Form submission fails silently</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**Phase 1: Discovery**</TerminalLine>
+    <div>Reading `CheckoutForm.tsx`... Found `handleSubmit`.</div>
+    <div class="text-rose-400">ERROR: Cannot read properties of undefined</div>
+  </TerminalBlock>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**Phase 2: Hypothesis**</TerminalLine>
+    <div class="text-xs space-y-1 mt-1 text-[var(--v-text-2)]">
+      <div>1. `emailRef.current` is null on mount</div>
+      <div>2. Event handler not bound correctly</div>
+    </div>
+  </TerminalBlock>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**Phase 4: Resolution**</TerminalLine>
+    <div>Fix applied: Added null check to `emailRef`.</div>
+    <div class="text-emerald-400">✅ Test passed: Form submits successfully.</div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## Pro Tips
+
+<ProTips>
+  <Tip title="Provide Context">
+    Paste the exact error message or stack trace for faster discovery.
+  </Tip>
+  <Tip title="Trust, Verify">
+    Ask the agent to run the reproduction case again to confirm it's solved.
+  </Tip>
+</ProTips>
+
+---
+
+## Next Steps
+
+- Try `/debug` on an existing bug
+- See [Deployment](/guide/deployment/) to ship your fix

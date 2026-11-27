@@ -1,0 +1,88 @@
+﻿---
+title: ការបង្កើតតេស្ត (Test Generation)
+description: បង្កើត និងដំណើរការតេស្តតាមរយៈលំហូរការងារ /test។
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, FeatureGrid, Feature } from '@/components/mdx';
+
+បង្កើត និងដំណើរការតេស្តតាមរយៈលំហូរការងារ `/test`។
+
+---
+
+## ទិដ្ឋភាពទូទៅ (Overview)
+
+ពាក្យបញ្ជា `/test` ចាត់ចែងលើ **ការបង្កើត និងដំណើរការតេស្ត**។
+វិភាគកូដ បង្កើតឈុតតេស្ត ដំណើរការតេស្ត ឬពិនិត្យមើលការគ្របដណ្តប់ (coverage)។
+
+<FeatureGrid>
+  <Feature title="run" description="ដំណើរការតេស្ត" />
+  <Feature title="generate" description="បង្កើតតេស្តស្វ័យប្រវត្ត" />
+  <Feature title="coverage" description="របាយការណ៍ Coverage" />
+  <Feature title="watch" description="Live test mode" />
+</FeatureGrid>
+
+---
+
+## ដំណើរការការងារ (The Process)
+
+<StepList>
+  <Step number={1} title="ដំណើរការតេស្តទាំងអស់">
+    ```bash
+    /test
+    ```
+  </Step>
+  <Step number={2} title="បង្កើតតេស្តសម្រាប់ឯកសារ">
+    ```bash
+    /test src/auth.ts
+    ```
+  </Step>
+  <Step number={3} title="ពិនិត្យមើល Coverage">
+    ```bash
+    /test coverage
+    ```
+  </Step>
+</StepList>
+
+---
+
+## ឧទាហរណ៍ជាក់ស្តែង (Example Session)
+
+<Terminal>
+  <TerminalLine type="user">/test src/services/auth.ts</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**Analyzing auth.ts...**</TerminalLine>
+    <div class="text-xs text-[var(--v-text-2)] mt-2">
+      រកឃើញ ៤ functions៖ login, register, verifyToken, resetPassword
+    </div>
+  </TerminalBlock>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**✅ Tests Generated!**</TerminalLine>
+    <div class="text-xs text-[var(--v-text-2)] mt-2 space-y-1">
+      <div>បានបង្កើត៖ `tests/auth.test.ts`</div>
+      <div>ចំនួនករណីតេស្ត៖ ១២</div>
+      <div class="text-emerald-400">Coverage: ៩៥%</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## គន្លឹះមានប្រយោជន៍ (Pro Tips)
+
+<ProTips>
+  <Tip title="តេស្តឥរិយាបថ">
+    ផ្តោតលើអ្វីដែល function ធ្វើ មិនមែនការអនុវត្តខាងក្នុង។
+  </Tip>
+  <Tip title="ករណីពិសេស (Edge Cases)">
+    តែងតែតេស្តកំហុស, input ទទេ, និងតម្លៃព្រំដែន។
+  </Tip>
+</ProTips>
+
+---
+
+## ជំហានបន្ទាប់ (Next Steps)
+
+- ដំណើរការ `/test` ដើម្បីដំណើរការឈុតតេស្តរបស់អ្នក
+- មើល [ការដាក់ពង្រាយផលិតកម្ម (Production Deployment)](/km/guide/deployment/) ដែលដំណើរការតេស្តដោយស្វ័យប្រវត្តិ

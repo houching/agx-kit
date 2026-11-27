@@ -1,0 +1,96 @@
+﻿---
+title: ការបន្ថែមមុខងារថ្មី (Add a New Feature)
+description: ស្វែងយល់ពីរបៀបបន្ថែមមុខងារថ្មីដោយសុវត្ថិភាពទៅក្នុងគម្រោងដែលមានស្រាប់តាមរយៈលំហូរការងារ /enhance។
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, Callout, FeatureGrid, Feature, StatusList, StatusItem } from '@/components/mdx';
+
+ស្វែងយល់ពីរបៀបបន្ថែមមុខងារស្មុគស្មាញដោយសុវត្ថិភាពទៅក្នុងគម្រោងដែលមានស្រាប់តាមរយៈលំហូរការងារ `/enhance`។
+
+---
+
+## ទិដ្ឋភាពទូទៅ (Overview)
+
+លំហូរការងារ `/enhance` គឺជាឧបករណ៍ប្រចាំថ្ងៃរបស់អ្នកសម្រាប់ការអភិវឌ្ឍន៍ជាបន្តបន្ទាប់។
+ខុសពី `/create` ដែលបង្កើតគម្រោងពីដំបូង `/enhance` ផ្តោតលើការបន្ថែមមុខងារជាក់លាក់ដោយមិនធ្វើឱ្យប៉ះពាល់ ឬបែកបាក់កូដចាស់ដែលមានស្រាប់ឡើយ។
+
+<Callout type="info">
+  **ស្ថានភាពជាក់ស្តែង៖** បន្ថែមមុខងារ "Dashboard Analytics" ទៅក្នុងកម្មវិធី SaaS ដែលមានស្រាប់។
+</Callout>
+
+---
+
+## ដំណើរការការងារ (The Process)
+
+<StepList>
+  <Step number={1} title="ការរៀបចំផែនការមុខងារ">
+    រៀបរាប់ពីតម្រូវការមុខងារឱ្យបានច្បាស់លាស់។
+
+    ```bash
+    /enhance Add an analytics dashboard for user activity
+    Requirements:
+    - Track daily active users and page views
+    - Visual charts using Recharts
+    - API endpoint to aggregate data
+    ```
+  </Step>
+  <Step number={2} title="ការអនុវត្តសមាសភាគ">
+    ភ្នាក់ងារជំនាញអនុវត្តការងារគ្រប់ស្រទាប់៖
+
+    <FeatureGrid cols={4}>
+      <Feature title="Database" description="Schema & migrations" />
+      <Feature title="Backend" description="Aggregator routes" />
+      <Feature title="Frontend" description="Telemetry charts" />
+      <Feature title="Testing" description="Regression tests" />
+    </FeatureGrid>
+  </Step>
+  <Step number={3} title="ផ្ទៀងផ្ទាត់ការរួមបញ្ចូល">
+    ដំណើរការការត្រួតពិនិត្យចុងក្រោយដើម្បីបញ្ជាក់ពីទំហំ bundle, accessibility និងតេស្ត។
+  </Step>
+</StepList>
+
+---
+
+## ឧទាហរណ៍ជាក់ស្តែង (Example Session)
+
+<Terminal>
+  <TerminalLine type="user">/enhance add dark mode toggle</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**Analyzing codebase...**</TerminalLine>
+    <div class="text-xs text-[var(--v-text-2)] mt-2">
+      <div>រកឃើញ៖ Tailwind CSS មិនទាន់មាន config សម្រាប់ dark mode</div>
+      <div>ផែនការ៖ កែសម្រួល tailwind.config, បន្ថែម ThemeProvider, បង្កើត toggle component</div>
+    </div>
+  </TerminalBlock>
+
+  <StatusList>
+    <StatusItem status="running" label="Frontend">កំពុងបង្កើត ThemeToggle...</StatusItem>
+    <StatusItem status="running" label="Testing">កំពុងបន្ថែម theme tests...</StatusItem>
+  </StatusList>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**✅ Feature Added!**</TerminalLine>
+    <div class="text-xs text-[var(--v-text-3)] mt-1">ដំណើរការ `/preview start` ដើម្បីសាកល្បង។</div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## គន្លឹះមានប្រយោជន៍ (Pro Tips)
+
+<ProTips>
+  <Tip title="ពិនិត្យមើល Dependencies">
+    ប្រើ `checklist.py` ដើម្បីការពារកុំឱ្យទំហំ bundle ឡើងធំពី library ថ្មី។
+  </Tip>
+  <Tip title="រក្សាភាពជាម៉ូឌុល">
+    ញែក component ថ្មីៗដើម្បីកាត់បន្ថយផលប៉ះពាល់លើកូដចាស់។
+  </Tip>
+</ProTips>
+
+---
+
+## ជំហានបន្ទាប់ (Next Steps)
+
+- សាកល្បងប្រើ `/enhance` ក្នុងគម្រោងរបស់អ្នក
+- មើល [ការបង្កើតតេស្ត (Test Generation)](/km/guide/test/) សម្រាប់ការគ្របដណ្តប់តេស្ត

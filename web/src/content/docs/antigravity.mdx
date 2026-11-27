@@ -1,0 +1,92 @@
+---
+title: Antigravity Runtime
+description: Google Antigravity is AGX Kit's production runtime with native hooks, MCP config sync, and doctor diagnostics.
+---
+
+import { FeatureGrid, Feature, Callout, Terminal, TerminalLine, TerminalBlock } from '@/components/mdx';
+
+Google Antigravity is AGX Kit's production runtime. Beyond rules, skills, and workflows, the kit ships a native integration layer inside `.agents/`.
+
+---
+
+## The runtime layer
+
+<FeatureGrid>
+  <Feature title="antigravity.json" description="Machine-readable runtime contract" />
+  <Feature title="hooks.json" description="Native PreToolUse safety gate" />
+  <Feature title="mcp_config.json" description="Workspace MCP source of truth" />
+  <Feature title="Doctor" description="Read-only integration diagnostics" />
+</FeatureGrid>
+
+---
+
+## Tool safety hook
+
+`hooks.json` registers a native `PreToolUse` gate for `run_command`. It is deliberately narrow — it blocks high-confidence destructive patterns only:
+
+- Unix root-filesystem deletion (`rm -rf /` and equivalents)
+- Filesystem formatting and raw-disk overwrite (`mkfs`, writing to `/dev/sdX`)
+- Windows drive formatting and forced root deletion
+
+Normal project cleanup (deleting `dist/`, `node_modules/`) passes through.
+
+<Callout type="warning">
+  The hook does not replace Antigravity permissions, workspace trust, sandboxing, or human approval. It is a last-resort tripwire, not a security boundary.
+</Callout>
+
+---
+
+## MCP synchronization
+
+`.agents/mcp_config.json` is the workspace source for MCP servers. The sync helper applies it explicitly — it refuses placeholder credentials, preserves conflicting entries by default, and backs up the target before writing:
+
+<Terminal>
+  <TerminalLine type="user">node .agents/hooks/sync-mcp.mjs</TerminalLine>
+</Terminal>
+
+---
+
+## Antigravity Doctor
+
+The Doctor checks discovery, MCP, hooks, orchestration, plugin packaging, and release readiness — read-only:
+
+<Terminal>
+  <TerminalLine type="user">node .agents/hooks/antigravity-doctor.mjs</TerminalLine>
+  <TerminalBlock>
+    <div class="space-y-1 text-xs">
+      <div><span class="text-emerald-400">[PASS]</span> discovery</div>
+      <div><span class="text-emerald-400">[PASS]</span> mcp</div>
+      <div><span class="text-emerald-400">[PASS]</span> hooks</div>
+      <div><span class="text-emerald-400">[PASS]</span> orchestration</div>
+      <div><span class="text-emerald-400">[PASS]</span> plugin</div>
+      <div><span class="text-emerald-400">[PASS]</span> validation</div>
+      <div class="text-teal-400 font-semibold mt-2">[PASS] Antigravity contract is ready.</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## Plugin bundle
+
+For teams who prefer a packaged install, the plugin builder produces a local Antigravity plugin bundle with a deterministic SHA-256 content inventory:
+
+<Terminal>
+  <TerminalLine type="user">node .agents/hooks/build-plugin.mjs</TerminalLine>
+</Terminal>
+
+<Callout type="info">
+  Everything on this page is validated in CI: the Doctor, hook regression tests, and plugin inventory run on every push.
+</Callout>
+
+---
+
+## Planner + Flash Worker Pattern
+
+Pair a high-reasoning planner in the main session with the scoped `worker` subagent (`model: flash`) to keep quota costs low and prevent whole-file read spam:
+
+1. **Main session (Planner)** — Select your planner model in the Antigravity model picker (or `/model`). Locate target files, line ranges, and symbols before delegating.
+2. **Scoped worker (`.agents/agents/worker.md`)** — Discovered natively by Antigravity `/agents`. Runs on `model: flash` and only reads bounded line ranges inside explicitly named files.
+3. **Delegation rules (`AGENTS.md`)** — Pass exact file paths, line ranges or symbol names, a narrow objective, and the verification command; keep tiny single-line edits in the main session.
+
+Verify discovery in the CLI or Agents panel with `/agents` (`worker` appears under Available Agents) and inspect its tool log in the Subagent Detail View.

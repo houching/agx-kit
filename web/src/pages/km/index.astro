@@ -1,0 +1,56 @@
+---
+import LandingNavbar from '../../components/landing/LandingNavbar.astro';
+import LandingHero from '../../components/landing/LandingHero.astro';
+import LandingStack from '../../components/landing/LandingStack.astro';
+import LandingBenefits from '../../components/landing/LandingBenefits.astro';
+import LandingFeatures from '../../components/landing/LandingFeatures.astro';
+import LandingWorkflows from '../../components/landing/LandingWorkflows.astro';
+import LandingSponsored from '../../components/landing/LandingSponsored.astro';
+import LandingFAQ from '../../components/landing/LandingFAQ.astro';
+import LandingFooter from '../../components/landing/LandingFooter.astro';
+import '../../styles/vantage.css';
+---
+
+<!DOCTYPE html>
+<html lang="km" dir="ltr" data-theme="dark" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AGX Kit — ស្ថាបត្យកម្ម AI Agent កម្រិតផលិតកម្ម</title>
+    <meta name="description" content="កញ្ចប់វិស្វកម្ម AI agent សម្រាប់ Antigravity រួមមានក្បួនច្បាប់ ជំនាញ លំហូរការងារ និងការរចនាម៉ូត Vantage console។" />
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+    <link rel="shortcut icon" href="/images/logo.png" />
+    <meta property="og:title" content="AGX Kit — ស្ថាបត្យកម្ម AI Agent កម្រិតផលិតកម្ម" />
+    <meta property="og:description" content="ជំនាញចំនួន 56, agent ឯកទេសចំនួន 24 និងលំហូរការងារកម្រិតផលិតកម្ម 16 ដំឡើងត្រឹមតែមួយពាក្យបញ្ជា។" />
+    <meta property="og:image" content="/images/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script is:inline>
+      (() => {
+        const storedTheme = localStorage.getItem('starlight-theme');
+        const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.dataset.theme = theme;
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen bg-background text-foreground antialiased selection:bg-brand/20 selection:text-foreground">
+    <LandingNavbar lang="km" />
+    <main id="main-content" tabindex="-1">
+      <LandingHero lang="km" />
+      <LandingStack lang="km" />
+      <LandingBenefits lang="km" />
+      <LandingFeatures lang="km" />
+      <LandingWorkflows lang="km" />
+      <LandingSponsored lang="km" />
+      <LandingFAQ lang="km" />
+    </main>
+    <LandingFooter lang="km" />
+  </body>
+</html>

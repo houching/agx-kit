@@ -1,0 +1,99 @@
+﻿---
+title: ការបំផុសគំនិតតាមរចនាសម្ព័ន្ធ (Structured Brainstorming)
+description: ស្វែងយល់ពីវិធីសាស្រ្តអនុវត្តជាច្រើនមុនពេលសរសេរកូដតាមរយៈលំហូរការងារ /brainstorm។
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, FeatureGrid, Feature, StepList, Step, Callout } from '@/components/mdx';
+
+ស្វែងយល់ពីវិធីសាស្រ្តជាច្រើនមុនពេលសរសេរកូដតាមរយៈលំហូរការងារ `/brainstorm`។
+
+---
+
+## ទិដ្ឋភាពទូទៅ (Overview)
+
+ពាក្យបញ្ជា `/brainstorm` ដំណើរការ **របៀបបំផុសគំនិតតាមរចនាសម្ព័ន្ធ**។
+ជំនួសឱ្យការចាប់ផ្តើមសរសេរកូដភ្លាមៗ ភ្នាក់ងារនឹងស្វែងយល់យ៉ាងហោចណាស់ ៣ វិធីសាស្រ្តផ្សេងគ្នា
+វិភាគចំណុចល្អ និងចំណុចខ្សោយ ហើយជួយអ្នកធ្វើការសម្រេចចិត្តប្រកបដោយទំនុកចិត្ត។
+
+<FeatureGrid>
+  <Feature title="គ្មានការសរសេរកូដ" description="ផ្តោតលើគំនិតស្ថាបត្យកម្មសុទ្ធសាធ" />
+  <Feature title="ជម្រើស ៣ ឡើងទៅ" description="ប្រៀបធៀបវិធីសាស្រ្តបច្ចេកទេសជានិច្ច" />
+  <Feature title="គុណសម្បត្តិ & គុណវិបត្តិ" description="ការវិភាគ trade-off ជាក់ស្តែង" />
+  <Feature title="អ្នកជាអ្នកសម្រេច" description="វិស្វករមនុស្សជាអ្នកសម្រេចចុងក្រោយ" />
+</FeatureGrid>
+
+---
+
+## ដំណើរការការងារ (The Process)
+
+<StepList>
+  <Step number={1} title="រៀបរាប់ពីបញ្ហាប្រឈមរបស់អ្នក">
+    ប្រាប់ភ្នាក់ងារពីអ្វីដែលអ្នកចង់ស្វែងយល់។ បញ្ជាក់ឱ្យច្បាស់ពីលក្ខខណ្ឌកំណត់បច្ចេកទេស។
+
+    ```bash
+    /brainstorm authentication system for my SaaS app
+    ```
+  </Step>
+  <Step number={2} title="ពិនិត្យមើលជម្រើស">
+    ភ្នាក់ងារបង្ហាញ ៣+ វិធីសាស្រ្ត ជាមួយនឹងចំណុចខ្លាំង ចំណុចខ្សោយ និងកម្រិតកិច្ចខិតខំប្រឹងប្រែង។
+  </Step>
+  <Step number={3} title="ធ្វើការសម្រេចចិត្ត">
+    ជ្រើសរើសជម្រើសមួយ បន្ទាប់មកបន្តទៅការអនុវត្តតាមរយៈ `/plan`, `/create` ឬ `/enhance`។
+  </Step>
+</StepList>
+
+---
+
+## ឧទាហរណ៍ជាក់ស្តែង (Example Session)
+
+<Terminal>
+  <TerminalLine type="user">/brainstorm state management for complex form</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**Exploring Options...**</TerminalLine>
+  </TerminalBlock>
+
+  <div class="space-y-4 pl-4 mb-4 font-mono text-xs">
+    <div class="border-t border-[var(--v-line)] pt-3">
+      <strong class="text-teal-400">Option A: React Hook Form + Zod</strong>
+      <div class="mt-1 space-y-1">
+        <div class="text-emerald-400">✅ Re-renders តិចបំផុត បទពិសោធន៍ DX ល្អ</div>
+        <div class="text-rose-400">❌ ត្រូវការរៀនសូត្រសម្រាប់ទម្រង់ស្មុគស្មាញ</div>
+        <div class="text-amber-400">📊 កម្រិតការងារ៖ ទាប</div>
+      </div>
+    </div>
+    <div class="border-t border-[var(--v-line)] pt-3">
+      <strong class="text-teal-400">Option B: Zustand</strong>
+      <div class="mt-1 space-y-1">
+        <div class="text-emerald-400">✅ គ្រប់គ្រងសកលពេញលេញ រក្សាទុកឆ្លងកាត់ route</div>
+        <div class="text-rose-400">❌ កូដ boilerplate ច្រើនសម្រាប់ input ក្នុងស្រុក</div>
+        <div class="text-amber-400">📊 កម្រិតការងារ៖ មធ្យម</div>
+      </div>
+    </div>
+  </div>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**💡 ការណែនាំ៖ ជម្រើស A**</TerminalLine>
+    <div>សម្រាប់ទម្រង់ដែលមាន field លើសពី ២០ React Hook Form ជួយកាត់បន្ថយ re-render ដែលមិនចាំបាច់។</div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## គន្លឹះមានប្រយោជន៍ (Pro Tips)
+
+<ProTips>
+  <Tip title="ផ្តល់បរិបទឱ្យបានច្បាស់">
+    បញ្ជាក់ពីលក្ខខណ្ឌកំណត់ជាមុន៖ "ខ្ញុំត្រូវការការគាំទ្រ SSR", "ត្រូវដំណើរការពេល offline បាន"។
+  </Tip>
+  <Tip title="សួរសំណួរបន្ថែម">
+    សួរសំណួរដេញដោលដូចជា "ប្រាប់ខ្ញុំបន្ថែមអំពី scalability នៃជម្រើស B ពេលមាន load ខ្ពស់" មុនពេលសម្រេចចិត្ត។
+  </Tip>
+</ProTips>
+
+---
+
+## ជំហានបន្ទាប់ (Next Steps)
+
+- សាកល្បងប្រើ `/brainstorm` សម្រាប់ការសម្រេចចិត្តស្ថាបត្យកម្មបន្ទាប់របស់អ្នក
+- បន្ទាប់ពីសម្រេចចិត្តរួច សូមប្រើ [ការបន្ថែមមុខងារថ្មី (Add a New Feature)](/km/guide/new-feature/) ដើម្បីអនុវត្ត

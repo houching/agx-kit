@@ -1,0 +1,85 @@
+﻿---
+title: Preview Management
+description: Manage your local development server with the /preview workflow.
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, FeatureGrid, Feature } from '@/components/mdx';
+
+Manage your local development server with the `/preview` workflow.
+
+---
+
+## Overview
+
+The `/preview` command manages your local development server.
+Start, stop, restart, or check the status with simple commands.
+
+<FeatureGrid>
+  <Feature title="start" description="Launch server" />
+  <Feature title="stop" description="Kill server" />
+  <Feature title="restart" description="Reload environment" />
+  <Feature title="check" description="Health status" />
+</FeatureGrid>
+
+---
+
+## The Process
+
+<StepList>
+  <Step number={1} title="Start Server">
+    ```bash
+    /preview start
+    ```
+  </Step>
+  <Step number={2} title="Check Status">
+    ```bash
+    /preview
+    ```
+  </Step>
+  <Step number={3} title="Stop Server">
+    ```bash
+    /preview stop
+    ```
+  </Step>
+</StepList>
+
+---
+
+## Example Session
+
+<Terminal>
+  <TerminalLine type="user">/preview start</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**🚀 Starting preview...**</TerminalLine>
+    <div class="text-xs text-[var(--v-text-2)] mt-2">
+      <div>Port: 3000</div>
+      <div>Type: Next.js</div>
+    </div>
+  </TerminalBlock>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**✅ Preview ready!**</TerminalLine>
+    <div>URL: <span class="text-teal-400">http://localhost:3000</span></div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## Pro Tips
+
+<ProTips>
+  <Tip title="Auto-detection">
+    Automatically detects Next.js, Vite, etc.
+  </Tip>
+  <Tip title="Port Conflict">
+    Suggests alternatives if port 3000 is busy.
+  </Tip>
+</ProTips>
+
+---
+
+## Next Steps
+
+- Run `/preview start` to launch your dev server
+- See [Production Deployment](/guide/deployment/) to go live

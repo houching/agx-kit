@@ -1,0 +1,114 @@
+---
+interface Props {
+  lang?: "en" | "km";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = {
+  en: {
+    eyebrow: "Benefits",
+    title: "Your shortcut to production-ready agent work",
+    subtitle: "AGX Kit packages the playbooks, agents, and guardrails you need so AI coding assistants act like a coordinated team instead of a single chat window.",
+    items: [
+      {
+        num: "01",
+        title: "Ship features faster",
+        description: "Specialist agents and skills cover planning, coding, review, security, and deploy so you spend less time reinventing prompts.",
+        icon: "sparkles",
+      },
+      {
+        num: "02",
+        title: "Safer updates",
+        description: "Managed-file manifests, three-way conflict detection, and backups mean agx-kit update never silently wipes your local edits.",
+        icon: "shield",
+      },
+      {
+        num: "03",
+        title: "Workflows that stick",
+        description: "From /brainstorm to /deploy, repeatable command workflows keep teams aligned on the same process.",
+        icon: "merge",
+      },
+      {
+        num: "04",
+        title: "Quality built in",
+        description: "Lint, security, SEO, performance, and test checkers live next to the skills that teach agents how to use them.",
+        icon: "chart",
+      },
+    ],
+  },
+  km: {
+    eyebrow: "អត្ថប្រយោជន៍",
+    title: "ផ្លូវកាត់ទៅកាន់ការងារ agent កម្រិតផលិតកម្ម",
+    subtitle: "AGX Kit រៀបចំនូវក្បួនច្បាប់ ភ្នាក់ងារឯកទេស និងរបាំងសុវត្ថិភាព ដូច្នេះ AI ជំនួយការសរសេរកូដដំណើរការដូចជាក្រុមការងារដែលសហការគ្នាយ៉ាងល្អ។",
+    items: [
+      {
+        num: "01",
+        title: "បញ្ចេញមុខងារបានលឿនជាងមុន",
+        description: "ភ្នាក់ងារឯកទេស និងជំនាញគ្របដណ្តប់លើការរៀបចំផែនការ ការសរសេរកូដ ការពិនិត្យឡើងវិញ សុវត្ថិភាព និងការដាក់ឱ្យដំណើរការ។",
+        icon: "sparkles",
+      },
+      {
+        num: "02",
+        title: "ការអាប់ដេតប្រកបដោយសុវត្ថិភាព",
+        description: "Managed-file manifests ការរកឃើញជម្លោះ 3-way និងការបម្រុងទុកមានន័យថា agx-kit update មិនដែលលុបការកែសម្រួលរបស់អ្នកដោយស្ងាត់ៗឡើយ។",
+        icon: "shield",
+      },
+      {
+        num: "03",
+        title: "លំហូរការងារច្បាស់លាស់",
+        description: "ចាប់ពី /brainstorm រហូតដល់ /deploy លំហូរការងារបែបពាក្យបញ្ជាធ្វើឱ្យក្រុមការងារដើរលើដំណើរការតែមួយ។",
+        icon: "merge",
+      },
+      {
+        num: "04",
+        title: "គុណភាពស្រាប់ក្នុងប្រព័ន្ធ",
+        description: "ឧបករណ៍ពិនិត្យ Lint, សុវត្ថិភាព, SEO, ប្រសិទ្ធភាព និងតេស្ត ត្រូវបានបំពាក់ស្រាប់ជាមួយជំនាញដែលបង្រៀន agent ពីរបៀបប្រើពួកវា។",
+        icon: "chart",
+      },
+    ],
+  },
+}[lang];
+---
+
+<section id="benefits" class="container mx-auto px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+  <div class="grid place-items-center gap-12 lg:grid-cols-2 lg:gap-20">
+    <div>
+      <p class="mb-2 text-lg tracking-wider text-brand font-medium">
+        {copy.eyebrow}
+      </p>
+      <h2 class="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+        {copy.title}
+      </h2>
+      <p class="text-lg text-muted-foreground md:text-xl leading-relaxed">
+        {copy.subtitle}
+      </p>
+    </div>
+
+    <div class="grid w-full gap-4 sm:grid-cols-2">
+      {copy.items.map((item) => (
+        <div class="group/number rounded-xl border border-border bg-card p-6 shadow-xs transition-colors hover:border-brand/40">
+          <div class="flex justify-between items-start mb-4">
+            {item.icon === "sparkles" && (
+              <svg class="size-8 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+            )}
+            {item.icon === "shield" && (
+              <svg class="size-8 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            )}
+            {item.icon === "merge" && (
+              <svg class="size-8 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
+            )}
+            {item.icon === "chart" && (
+              <svg class="size-8 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            )}
+            <span class="text-5xl font-mono font-bold text-muted-foreground/15 transition-colors group-hover/number:text-brand/30">
+              {item.num}
+            </span>
+          </div>
+          <h3 class="mb-2 text-lg font-bold text-foreground">{item.title}</h3>
+          <p class="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

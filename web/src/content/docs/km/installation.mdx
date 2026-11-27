@@ -1,0 +1,84 @@
+---
+title: ការដំឡើង (Installation)
+description: របៀបដំឡើង AGX Kit តាមរយៈ Bun និង Git SSH URLs។
+---
+
+import { Callout, StepList, Step, Terminal, TerminalLine, TerminalBlock } from '@/components/mdx';
+
+ស្វែងយល់អំពីរបៀបដំឡើង AGX Kit និងកំណត់រចនាសម្ព័ន្ធសម្រាប់ Gemini CLI និង Google Antigravity។
+
+---
+
+## វិធីសាស្ត្រទី 1: ដំឡើង CLI ជាសកល (Global Install — ណែនាំ)
+
+ដំឡើង `agx-kit` ជាសកលពី GitHub ដើម្បីអាចដំណើរការពាក្យបញ្ជា `agx-kit` ដោយផ្ទាល់នៅក្នុងគម្រោងណាមួយ៖
+
+<StepList>
+  <Step number={1} title="ដំឡើង CLI ជាសកល">
+    ```bash
+    bun add -g github:houching/agx-kit
+    # ឬប្រើ npm
+    npm install -g github:houching/agx-kit
+    ```
+  </Step>
+  <Step number={2} title="ចាប់ផ្តើម ឬអាប់ដេតគម្រោងណាមួយ">
+    ```bash
+    agx-kit init
+    # ក្រោយមក អាប់ដេតដោយសុវត្ថិភាព
+    agx-kit update
+    ```
+  </Step>
+</StepList>
+
+<Terminal>
+  <TerminalLine type="user">agx-kit init</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs space-y-1">
+      <div class="text-cyan-400">Initializing .agents runtime...</div>
+      <div class="text-emerald-400">✅ Created .agents/ (agents, skills, workflows, rules, hooks)</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## វិធីសាស្ត្រទី 2: ដំឡើងតាមគម្រោង (`bunx` / `npx`)
+
+ប្រសិនបើអ្នកចង់ដំឡើង `agx-kit` តែក្នុង `devDependencies` នៃគម្រោងជាក់លាក់មួយ៖
+
+<StepList>
+  <Step number={1} title="បន្ថែមទៅក្នុង project devDependencies តាមរយៈ Git URL">
+    ```bash
+    bun add -d github:houching/agx-kit
+    # ឬប្រើ npm
+    npm install -D github:houching/agx-kit
+    ```
+  </Step>
+  <Step number={2} title="ចាប់ផ្តើមដំណើរការ toolkit">
+    ```bash
+    bunx agx-kit init
+    ```
+  </Step>
+</StepList>
+
+---
+
+## រចនាសម្ព័ន្ធថតឯកសារ (Directory Structure)
+
+បន្ទាប់ពី initialization គម្រោងរបស់អ្នកនឹងមាន `.agents/` runtime ស្តង់ដារ៖
+
+```text
+.agents/
+├── agent/           # 20 Specialist AI Agents
+├── skills/          # 45 Domain-specific skills
+├── workflows/       # 13 Slash commands
+├── rules/           # Workspace and tier rules
+├── hooks/           # Native Antigravity safety gates & doctor
+├── memory/          # Persistent cross-session project memory
+├── ARCHITECTURE.md  # Architectural reference map
+└── antigravity.json # Antigravity runtime declaration
+```
+
+<Callout type="tip" title="ការដកចេញពី Git (Git Exclusion)">
+  ប្រសិនបើអ្នកមិនចង់ commit <code>.agents/</code> ទៅក្នុង repository ទេ អ្នកអាចបន្ថែមវាទៅក្នុង <code>.git/info/exclude</code> ឬ <code>.gitignore_global</code>។
+</Callout>

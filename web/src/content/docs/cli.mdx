@@ -1,0 +1,146 @@
+﻿---
+title: Commands & Options
+description: Complete command-line interface documentation for @houching/agx-kit.
+---
+
+import { Callout, Terminal, TerminalLine, TerminalBlock } from '@/components/mdx';
+
+The `@houching/agx-kit` CLI manages the installation, maintenance, and validation of the `.agents/` runtime inside your project repository.
+
+---
+
+## Commands
+
+### `agx-kit init`
+
+Initializes AGX Kit in the current working directory, writing the `.agents` folder and `manifest.json`.
+
+<Terminal>
+  <TerminalLine type="user">bunx agx-kit init</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs space-y-1">
+      <div class="text-emerald-400">✔ Initialized AGX Kit runtime</div>
+      <div>Created .agents/ (30 agents, 40 skills, 10 workflows)</div>
+      <div>Created manifest.json & manifest.lock.json</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+<div class="bg-[var(--v-surface)] p-4 rounded-lg border border-[var(--v-line)] mb-6 text-sm">
+  <div class="font-semibold text-[var(--v-text-1)] mb-2">Behavior</div>
+  <ul class="text-[var(--v-text-2)] space-y-1 text-xs">
+    <li>• Writes default agent definitions and instructions to <code>.agents/</code></li>
+    <li>• Creates <code>manifest.json</code> and <code>manifest.lock.json</code></li>
+    <li>• Fails safely if <code>.agents/</code> already exists, unless <code>--force</code> is passed</li>
+  </ul>
+</div>
+
+---
+
+### `agx-kit update`
+
+Updates an existing `.agents` directory with the latest toolkit definitions.
+
+<Terminal>
+  <TerminalLine type="user">bunx agx-kit update</TerminalLine>
+</Terminal>
+
+<Callout type="warning" title="Direct Modification Notice">
+  Modifying kit-managed files directly may cause update conflicts. Use local overrides or custom agent definitions where possible.
+</Callout>
+
+<div class="bg-[var(--v-surface)] p-4 rounded-lg border border-[var(--v-line)] mb-6 text-sm">
+  <div class="font-semibold text-[var(--v-text-1)] mb-2">Behavior</div>
+  <ul class="text-[var(--v-text-2)] space-y-1 text-xs">
+    <li>• Automatically creates a pre-update backup in <code>.agents/.agx-kit/backups/</code></li>
+    <li>• Uses the <code>merge</code> strategy by default: preserves local user modifications and writes incoming conflicting copies to <code>.agents/.agx-kit/conflicts/</code></li>
+    <li>• Supports <code>--strategy replace</code> for clean upstream alignment</li>
+  </ul>
+</div>
+
+---
+
+### `agx-kit rollback`
+
+Restores `.agents/` to a previous state from an automatic backup.
+
+<Terminal>
+  <TerminalLine type="user">bunx agx-kit rollback</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs space-y-1">
+      <div>? Restore backup 2026-07-26T16-03-21? (y/N) <span class="text-teal-400">y</span></div>
+      <div class="text-emerald-400">Restored backup 2026-07-26T16-03-21</div>
+      <div class="text-[var(--v-text-2)]">Pre-rollback backup: .agents/.agx-kit/backups/...</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+<div class="bg-[var(--v-surface)] p-4 rounded-lg border border-[var(--v-line)] mb-6 text-sm">
+  <div class="font-semibold text-[var(--v-text-1)] mb-2">Behavior</div>
+  <ul class="text-[var(--v-text-2)] space-y-1 text-xs">
+    <li>• Lists available backups created during previous <code>init</code> or <code>update</code> operations</li>
+    <li>• Prompts for confirmation before restoring files</li>
+    <li>• Creates a backup of the current state before rolling back</li>
+  </ul>
+</div>
+
+---
+
+### `agx-kit status`
+
+Displays the current status of the AGX Kit installation, including version, modified files, and integrity check.
+
+<Terminal>
+  <TerminalLine type="user">bunx agx-kit status</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs space-y-1 font-mono">
+      <div>Version: 1.0.0</div>
+      <div>Managed files: 142 total, 0 modified</div>
+      <div>Backups: 2 available in .agents/.agx-kit/backups/</div>
+      <div class="text-emerald-400">Status: Clean</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## Options & Flags
+
+| Option | Description |
+|---|---|
+| `-f, --force` | Force overwrite of existing `.agents` directory during `init` or `update`. |
+| `-p, --path <dir>` | Target directory for installation (defaults to current working directory). |
+| `-b, --branch <name>` | Git branch or tag to install from. |
+| `-q, --quiet` | Suppress non-error output during execution. |
+| `--dry-run` | Preview files that would be created, updated, or conflicted without writing to disk. |
+| `--strategy <merge\|replace>` | Strategy for handling updates: `merge` (default, preserves custom files) or `replace` (clean overwrite). |
+| `--no-backup` | Skip creating an automatic backup before modifying files. |
+| `--conflict-report <file>` | Path where the JSON conflict report should be written. |
+
+---
+
+## Common Examples
+
+### Force Reinstallation
+
+```bash
+bunx agx-kit init --force
+```
+
+### Dry Run Update
+
+```bash
+bunx agx-kit update --dry-run
+```
+
+### Replace Strategy Update
+
+```bash
+bunx agx-kit update --strategy replace
+```
+
+### Restore a Specific Backup
+
+```bash
+bunx agx-kit rollback --backup 2026-07-26T16-03-21
+```

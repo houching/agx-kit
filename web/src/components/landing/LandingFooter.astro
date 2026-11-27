@@ -1,0 +1,172 @@
+---
+interface Props {
+  lang?: "en" | "km";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = {
+  en: {
+    blurb: "Antigravity-first AI agent engineering kit with rules, skills, workflows, and Vantage console aesthetics.",
+    product: "Product",
+    resources: "Resources",
+    community: "Community",
+    legal: "Legal",
+    documentation: "Documentation",
+    agents: "Agents",
+    skills: "Skills",
+    workflows: "Workflows",
+    installation: "Installation",
+    cli: "CLI Reference",
+    changelog: "Changelog",
+    github: "GitHub",
+    issues: "Issues",
+    discussions: "Discussions",
+    support: "Support on Patreon",
+    license: "MIT License",
+    security: "Security Policy",
+    docsPrefix: "",
+  },
+  km: {
+    blurb: "កញ្ចប់វិស្វកម្ម AI agent សម្រាប់ Antigravity រួមមានក្បួនច្បាប់ ជំនាញ លំហូរការងារ និងការរចនាម៉ូត Vantage console។",
+    product: "ផលិតផល",
+    resources: "ធនធាន",
+    community: "សហគមន៍",
+    legal: "ច្បាប់",
+    documentation: "ឯកសារ",
+    agents: "ភ្នាក់ងារ (Agents)",
+    skills: "ជំនាញ (Skills)",
+    workflows: "លំហូរការងារ (Workflows)",
+    installation: "ការដំឡើង",
+    cli: "ឯកសារយោង CLI",
+    changelog: "កំណត់ហេតុបច្ចុប្បន្នភាព",
+    github: "GitHub",
+    issues: "បញ្ហា (Issues)",
+    discussions: "ការពិភាក្សា",
+    support: "គាំទ្រតាមរយៈ Patreon",
+    license: "អាជ្ញាប័ណ្ណ MIT",
+    security: "គោលការណ៍សុវត្ថិភាព",
+    docsPrefix: "/km",
+  },
+}[lang];
+
+const p = copy.docsPrefix;
+---
+
+<footer id="footer" class="container mx-auto px-4 py-12 sm:py-16 md:py-24 sm:px-6 lg:px-8">
+  <div class="rounded-2xl border border-border bg-card p-6 sm:p-8 md:p-10 shadow-xs">
+    <div class="grid grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-8 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
+      <div class="col-span-full xl:col-span-2">
+        <a href={lang === "km" ? "/km/" : "/"} class="flex items-center gap-2 font-bold text-foreground no-underline">
+          <img
+            src="/images/logo.png"
+            alt="AGX Kit"
+            width="36"
+            height="36"
+            class="size-9 rounded-lg"
+          />
+          <span class="text-2xl">AGX Kit</span>
+        </a>
+        <p class="mt-3 max-w-xs text-sm text-muted-foreground leading-relaxed">
+          {copy.blurb}
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <h3 class="text-xs sm:text-sm font-bold text-foreground uppercase tracking-wider font-mono">{copy.product}</h3>
+        <a href={`${p}/introduction/`} class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1">
+          {copy.documentation}
+        </a>
+        <a href={`${p}/agents/`} class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1">
+          {copy.agents}
+        </a>
+        <a href={`${p}/skills/`} class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1">
+          {copy.skills}
+        </a>
+        <a href={`${p}/workflows/`} class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1">
+          {copy.workflows}
+        </a>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <h3 class="text-xs sm:text-sm font-bold text-foreground uppercase tracking-wider font-mono">{copy.resources}</h3>
+        <a href={`${p}/installation/`} class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1">
+          {copy.installation}
+        </a>
+        <a href={`${p}/cli/`} class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1">
+          {copy.cli}
+        </a>
+        <a href={`${p}/changelog/`} class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1">
+          {copy.changelog}
+        </a>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <h3 class="text-xs sm:text-sm font-bold text-foreground uppercase tracking-wider font-mono">{copy.community}</h3>
+        <a
+          href="https://github.com/houching/agx-kit"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1"
+        >
+          {copy.github}
+        </a>
+        <a
+          href="https://github.com/houching/agx-kit/issues"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1"
+        >
+          {copy.issues}
+        </a>
+        <a
+          href="https://github.com/houching/agx-kit/discussions"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1"
+        >
+          {copy.discussions}
+        </a>
+        <a
+          href="https://www.patreon.com/houching"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1"
+        >
+          {copy.support}
+        </a>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <h3 class="text-xs sm:text-sm font-bold text-foreground uppercase tracking-wider font-mono">{copy.legal}</h3>
+        <a
+          href="https://github.com/houching/agx-kit/blob/main/LICENSE"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1"
+        >
+          {copy.license}
+        </a>
+        <a
+          href="https://github.com/houching/agx-kit/blob/main/SECURITY.md"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors no-underline py-1"
+        >
+          {copy.security}
+        </a>
+      </div>
+    </div>
+
+    <div class="my-6 sm:my-8 border-t border-border"></div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground text-center sm:text-left">
+      <p>
+        &copy; {new Date().getFullYear()} AGX Kit by <a href="https://github.com/houching" class="text-foreground hover:text-brand transition-colors font-medium no-underline">@houching</a>.
+      </p>
+      <p class="font-mono">
+        Engineered for Google Antigravity
+      </p>
+    </div>
+  </div>
+</footer>

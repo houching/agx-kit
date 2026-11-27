@@ -1,0 +1,66 @@
+[
+    {
+        "command": "/brainstorm",
+        "description": "Socratic discovery"
+    },
+    {
+        "command": "/coordinate",
+        "description": "Advanced multi-agent coordination"
+    },
+    {
+        "command": "/create",
+        "description": "Create new features"
+    },
+    {
+        "command": "/debug",
+        "description": "Debug issues"
+    },
+    {
+        "command": "/deploy",
+        "description": "Deploy application"
+    },
+    {
+        "command": "/enhance",
+        "description": "Improve existing code"
+    },
+    {
+        "command": "/orchestrate",
+        "description": "Multi-agent coordination"
+    },
+    {
+        "command": "/plan",
+        "description": "Task breakdown"
+    },
+    {
+        "command": "/preview",
+        "description": "Preview changes"
+    },
+    {
+        "command": "/remember",
+        "description": "Save to persistent memory"
+    },
+    {
+        "command": "/spec",
+        "description": "Functional spec & Socratic clarification"
+    },
+    {
+        "command": "/spec-archive",
+        "description": "Sync deltas to living specs & archive"
+    },
+    {
+        "command": "/spec-verify",
+        "description": "Verify spec compliance with execution proof"
+    },
+    {
+        "command": "/status",
+        "description": "Check project status"
+    },
+    {
+        "command": "/test",
+        "description": "Run tests"
+    },
+    {
+        "command": "/verify",
+        "description": "Prove code works by running it"
+    }
+]

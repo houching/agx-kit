@@ -1,0 +1,70 @@
+﻿---
+title: ការអាប់ដេត និង Rollback (Managed Updates & Rollback)
+description: AGX Kit ដំឡើង .agents/ ជា managed tree ដែលមានភាពសុចរិត cryptographic យុទ្ធសាស្ត្របញ្ចូលគ្នាសុវត្ថិភាព និងការ rollback ភ្លាមៗ។
+---
+
+import { FeatureGrid, Feature, StepList, Step, Callout, Terminal, TerminalLine, TerminalBlock } from '@/components/mdx';
+
+AGX Kit ដំឡើង `.agents/` ជា **managed tree**៖ រាល់ឯកសាររបស់ kit ត្រូវបានតាមដានក្នុង manifest ជាមួយលេខកូដសម្ងាត់ SHA-256 hash ដូច្នេះរាល់ការ update ដឹងច្បាស់ថាអ្វីជារបស់អ្នក និងអ្វីជារបស់ kit។
+
+---
+
+## របៀបដំណើរការនៃ Managed Tree
+
+<FeatureGrid>
+  <Feature title="manifest.json" description="ផ្លូវ component, កំណែ, ទំនាក់ទំនង" />
+  <Feature title="manifest.lock.json" description="លេខកូដសម្ងាត់ SHA-256 ក្នុងឯកសារនីមួយៗ" />
+  <Feature title="Backups" description="ការ backup ស្វ័យប្រវត្តមុនពេលផ្លាស់ប្តូរ" />
+  <Feature title="Reports" description="របាយការណ៍ update អានដោយម៉ាស៊ីន" />
+</FeatureGrid>
+
+ឯកសារដែលអ្នកបន្ថែម ឬកែប្រែ **មិនត្រូវបានចាត់ទុក** ជាឯកសារគ្រប់គ្រងដោយ kit ឡើយ ដូច្នេះយុទ្ធសាស្ត្រលំនាំដើម `merge` នឹងរក្សាទុកឯកសារទាំងនោះ។ មានតែឯកសារណាដែល hash ត្រូវគ្នានឹង manifest ប៉ុណ្ណោះដែលត្រូវបាន update ជំនួសកន្លែងចាស់។
+
+---
+
+## ការ Update ប្រកបដោយសុវត្ថិភាព
+
+<StepList>
+  <Step number={1} title="មើលផែនការជាមុន (Preview the plan)">
+    ```bash
+    agx-kit update --dry-run
+    ```
+    បង្ហាញការបន្ថែម, ការផ្លាស់ប្តូរ, ឯកសារមូលដ្ឋានដែលត្រូវបានរក្សាទុក, និងជម្លោះ — ដោយមិនប៉ះពាល់ដល់ថាសទិន្នន័យឡើយ។
+  </Step>
+  <Step number={2} title="អនុវត្តការបញ្ចូលគ្នា (Apply the merge)">
+    ```bash
+    agx-kit update
+    ```
+    Backup ត្រូវបានបង្កើតឡើងជាមុន។ ការផ្លាស់ប្តូរក្នុងស្រុកត្រូវបានរក្សាទុក; ឯកសារដែលមានជម្លោះត្រូវបានរក្សា ហើយច្បាប់ចម្លងថ្មីត្រូវបានរក្សាទុកក្នុង `.agents/.agx-kit/conflicts/` សម្រាប់ការត្រួតពិនិត្យ។
+  </Step>
+  <Step number={3} title="ពិនិត្យរបាយការណ៍ (Review the report)">
+    រាល់ការដំណើរការនឹងសរសេររបាយការណ៍រួមជាមួយ Run ID, យុទ្ធសាស្ត្រ និងសកម្មភាពលើឯកសារនីមួយៗ។ ប្រើ `--conflict-report <file>` ដើម្បីកំណត់ផ្លូវឯកសារផ្ទាល់ខ្លួន។
+  </Step>
+</StepList>
+
+<Callout type="info">
+  ចង់បានដើមឈើ upstream ស្អាតដូចដើមវិញទេ? ប្រើ `agx-kit update --strategy replace`។ ប្រព័ន្ធនឹងនៅតែបង្កើត backup ជាមុនសិន។
+</Callout>
+
+---
+
+## ការបង្វិលត្រឡប់ក្រោយ (Rolling back)
+
+<Terminal>
+  <TerminalLine type="user">agx-kit rollback</TerminalLine>
+  <TerminalBlock>
+    <div class="space-y-1 text-xs">
+      <div>? ស្តារ backup 2026-07-26T16-03-21 ឡើងវិញ? (y/N) <span class="text-teal-400">y</span></div>
+      <div class="text-emerald-400">បានស្តារ backup 2026-07-26T16-03-21 រួចរាល់</div>
+      <div class="text-[var(--v-text-2)]">Pre-rollback backup: .agents/.agx-kit/backups/...</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+- ជ្រើសរើស backup ថ្មីបំផុតតាមលំនាំដើម; ឬបញ្ជាក់តាមរយៈ `--backup <id>`។
+- Tree បច្ចុប្បន្នត្រូវបាន backup មុនពេលស្តារឡើងវិញ (បិទតាមរយៈ `--no-keep-current`)។
+- មើលលទ្ធផលសាកល្បងជាមុនតាមរយៈ `--dry-run`។
+
+<Callout type="warning">
+  Backups ស្ថិតនៅខាងក្នុងគម្រោងរបស់អ្នកក្រោមថត `.agents/.agx-kit/`។ ការលុបថតនេះនឹងលុបចំណុច rollback របស់អ្នកទាំងអស់។
+</Callout>

@@ -1,0 +1,27 @@
+---
+import agentsData from '../../data/agents.json';
+---
+
+<div class="not-content grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  {agentsData.map((agent) => (
+    <div class="p-4 rounded-xl border border-[var(--v-line)] bg-[var(--v-surface)] hover:border-amber-500/40 transition-colors">
+      <div class="flex items-center justify-between gap-2 mb-2">
+        <code class="text-sm font-mono font-semibold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+          @{agent.name}
+        </code>
+      </div>
+      <p class="text-xs text-[var(--v-text-2)] mb-3 leading-relaxed">
+        {agent.description}
+      </p>
+      {agent.skills && agent.skills.length > 0 && (
+        <div class="flex flex-wrap gap-1.5 pt-2 border-t border-[var(--v-line)]/50">
+          {agent.skills.map((skill) => (
+            <span class="text-[10px] font-mono text-[var(--v-text-2)] bg-[var(--v-surface-2)] px-2 py-0.5 rounded border border-[var(--v-line)]">
+              {skill}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  ))}
+</div>

@@ -1,0 +1,86 @@
+﻿---
+title: ស្ថានភាពគម្រោង (Project Status)
+description: ពិនិត្យមើលទិដ្ឋភាពទូទៅនៃគម្រោងរបស់អ្នកតាមរយៈលំហូរការងារ /status។
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, FeatureGrid, Feature } from '@/components/mdx';
+
+ពិនិត្យមើលទិដ្ឋភាពទូទៅនៃគម្រោងរបស់អ្នកតាមរយៈលំហូរការងារ `/status`។
+
+---
+
+## ទិដ្ឋភាពទូទៅ (Overview)
+
+ពាក្យបញ្ជា `/status` ផ្តល់ជូនអ្នកនូវ **ផ្ទាំងព័ត៌មាន (Dashboard)** ពេញលេញនៃគម្រោងរបស់អ្នក។
+មើលព័ត៌មានគម្រោង, tech stack, មុខងារដែលបានបញ្ចប់, សកម្មភាពរបស់ agent, និងស្ថានភាព preview។
+
+<FeatureGrid>
+  <Feature title="Project" description="ព័ត៌មាន និង Stack" />
+  <Feature title="Agents" description="ក្តារស្ថានភាព Agent" />
+  <Feature title="Files" description="ស្ថិតិឯកសារ" />
+  <Feature title="Preview" description="ពិនិត្យសុខភាព Server" />
+</FeatureGrid>
+
+---
+
+## ដំណើរការការងារ (The Process)
+
+<StepList>
+  <Step number={1} title="ដំណើរការពាក្យបញ្ជា (Run Command)">
+    ដំណើរការតែពាក្យបញ្ជាមួយប៉ុណ្ណោះដើម្បីមើលផ្ទាំងព័ត៌មាន៖
+
+    ```bash
+    /status
+    ```
+  </Step>
+</StepList>
+
+---
+
+## ឧទាហរណ៍ជាក់ស្តែង (Example Session)
+
+<Terminal>
+  <TerminalLine type="user">/status</TerminalLine>
+
+  <TerminalBlock>
+    <div class="text-yellow-400 mb-2 font-mono text-xs">=== ស្ថានភាពគម្រោង (Project Status) ===</div>
+    <div class="space-y-1 mb-4 text-xs">
+      <div>📁 គម្រោង: my-ecommerce</div>
+      <div>🏷️ ប្រភេទ: nextjs-ecommerce</div>
+      <div>📄 ឯកសារ: 73 បង្កើតថ្មី, 12 កែប្រែ</div>
+    </div>
+
+    <div class="text-yellow-400 mb-2 font-mono text-xs">=== ស្ថានភាព Agent (Agent Status) ===</div>
+    <div class="space-y-1 mb-4 text-xs">
+      <div><span class="text-emerald-400">✅</span> database-architect → បានបញ្ចប់</div>
+      <div><span class="text-emerald-400">✅</span> backend-specialist → បានបញ្ចប់</div>
+      <div><span class="text-teal-400">🔄</span> frontend-specialist → 60%</div>
+    </div>
+
+    <div class="text-yellow-400 mb-2 font-mono text-xs">=== Preview ===</div>
+    <div class="space-y-1 text-xs">
+      <div>🌐 URL: <span class="text-teal-400">http://localhost:3000</span></div>
+      <div>💚 សុខភាព: <span class="text-emerald-400">OK</span></div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## គន្លឹះមានប្រយោជន៍ (Pro Tips)
+
+<ProTips>
+  <Tip title="មុនពេល Deploy">
+    ពិនិត្យស្ថានភាពដើម្បីធានាថា agent ទាំងអស់បានបញ្ចប់ការងារដោយជោគជ័យ។
+  </Tip>
+  <Tip title="តាមដានវឌ្ឍនភាព">
+    តាមដានការសម្របសម្រួល Multi-Agent តាមពេលវេលាជាក់ស្តែង។
+  </Tip>
+</ProTips>
+
+---
+
+## ជំហានបន្ទាប់ (Next Steps)
+
+- ដំណើរការ `/status` ដើម្បីពិនិត្យស្ថានភាពគម្រោងបច្ចុប្បន្ន
+- មើល [ការដាក់ពង្រាយផលិតកម្ម (Production Deployment)](/km/guide/deployment/) នៅពេលត្រៀមរួចរាល់សម្រាប់ផលិតកម្ម

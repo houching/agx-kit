@@ -1,0 +1,15 @@
+[
+    {
+        "version": "2026.11.28",
+        "date": "2026-11-28",
+        "summary": "Clean-slate baseline release 2026.11.28: Antigravity-native AGX Kit (24 agents, 56 skills, 16 workflows, 7 rules), full Bun runtime migration, Astro Starlight bilingual docs (EN/KM) with TypeScript 7.1 content mapper, and Cloudflare Pages deployment.",
+        "changes": {
+            "Added": [
+                "Antigravity-native workspace baseline: 24 Specialist Agents, 56 Skills, 16 Workflows, 7 Rules, persistent memory, MCP sync helper, native PreToolUse safety hook, and deterministic plugin builder.",
+                "Full Bun migration across root, cli/, and web/ (bun.lock, bun:test, SHA-pinned setup-bun CI, and Dependabot bun ecosystem).",
+                "Astro Starlight documentation site with Vantage Graphite theme, Pagefind search, bilingual English/Khmer (/km/) support, TypeScript 7.1 + @astrojs/ts-content-mapper, and Cloudflare Pages deployment.",
+                "CLI package @houching/agx-kit with merge-aware init, update, rollback, and status commands, Node 18+/Bun compatibility, and npm OIDC Trusted Publishing."
+            ]
+        }
+    }
+]

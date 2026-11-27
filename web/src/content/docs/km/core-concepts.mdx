@@ -1,0 +1,49 @@
+---
+title: គំនិតស្នូល (Core Concepts)
+description: មូលដ្ឋានគ្រឹះស្ថាបត្យកម្ម និងសសរស្តម្ភសំខាន់ៗនៃប្រព័ន្ធដំណើរការភ្នាក់ងារ AGX Kit។
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+AGX Kit បម្លែងគម្រោងស្តង់ដារឱ្យទៅជាកន្លែងការងារដែលត្រៀមរួចជាស្រេចសម្រាប់ AI Agent ដោយកំណត់ព្រំដែនច្បាស់លាស់ ធានាសុចរិតភាពតាមរយៈ Cryptography និងបែងចែកការងារតាមជំនាញឯកទេស។
+
+---
+
+## សសរស្តម្ភសំខាន់ទាំង ៥ (The 5 Core Pillars)
+
+<CardGrid>
+  <Card title="ភ្នាក់ងារឯកទេស (Specialist Agents)" icon="seti:graphql">
+    ភ្នាក់ងារចំនួន ២០ ដែលបែងចែកតាមតួនាទី (orchestrator, planner, coder, reviewer, security)។ ការបែងចែកការងារដាច់ដោយឡែកការពារកុំឱ្យមានការកូដលើសវិសាលភាព។
+    
+    [ស្វែងយល់ពី Agents &rarr;](/km/agents/)
+  </Card>
+  <Card title="ជំនាញតាមផ្នែក (Domain Skills)" icon="open-book">
+    កញ្ចប់ចំណេះដឹងចំនួន ៤៥ ដែលគ្របដណ្តប់លើ Clean Code, Framework ទំនើប, Systems Programming (Go/Rust), សវនកម្មសុវត្ថិភាព និងការធ្វើតេស្ត។
+    
+    [ស្វែងយល់ពី Skills &rarr;](/km/skills/)
+  </Card>
+  <Card title="លំហូរការងារ (Workflows & Slash Commands)" icon="rocket">
+    លំហូរការងារស្តង់ដារតាមរយៈពាក្យបញ្ជា (`/brainstorm`, `/plan`, `/create`, `/debug`, `/deploy`) ជួយណែនាំភ្នាក់ងារក្នុងការអនុវត្តការងារជាជំហានៗ។
+    
+    [ស្វែងយល់ពី Workflows &rarr;](/km/workflows/)
+  </Card>
+  <Card title="បរិយាកាស Antigravity Runtime" icon="setting">
+    ការរួមបញ្ចូលដើមជាមួយ Google Antigravity រួមមាន `antigravity.json`, បញ្ជីឈ្មោះ MCP, ស្គ្រីបពិនិត្យសុវត្ថិភាព (Doctor) និងច្រកទ្វារសុវត្ថិភាព `PreToolUse`។
+    
+    [ស្វែងយល់ពី Runtime &rarr;](/km/antigravity/)
+  </Card>
+  <Card title="ការធ្វើបច្ចុប្បន្នភាព និងត្រឡប់ក្រោយ (Managed Updates & Rollback)" icon="approve-check">
+    ថត `.agents/` ត្រូវបានការពារដោយ SHA-256 hash នៅក្នុង `manifest.lock.json` ដែលអនុញ្ញាតឱ្យធ្វើបច្ចុប្បន្នភាពដោយសុវត្ថិភាព និងអាចត្រឡប់ក្រោយវិញភ្លាមៗប្រសិនបើមានបញ្ហា។
+    
+    [ស្វែងយល់ពី Updates &rarr;](/km/updates/)
+  </Card>
+</CardGrid>
+
+---
+
+## គោលការណ៍ស្ថាបត្យកម្ម (Architectural Principles)
+
+1. **ដោះស្រាយការពឹងផ្អែកពីម៉ូឌុលចុងក្រោយ (Leaf-First)**៖ ការផ្លាស់ប្តូរទាំងអស់ត្រូវបានផ្ទៀងផ្ទាត់ចេញពី leaf module ជាមុនសិន មុនពេលប៉ះពាល់ដល់ស្រទាប់សម្របសម្រួល។
+2. **Oracle Parity និងគ្មានការកែប្រែតេស្ត**៖ ឈុតតេស្តដែលមានស្រាប់គឺជាការពិតដាច់ខាត។ កែកូដឱ្យត្រូវ មិនត្រូវបន្ទាបលក្ខខណ្ឌតេស្តឡើយ។
+3. **រចនាប័ទ្មបច្ចេកទេស Vantage**៖ បង្កើតឡើងដោយប្រើផ្ទាំង Vantage (`#0d0f12` slate canvas, ខ្សែបន្ទាត់ 1px hairline, លេខ monospace)។
+4. **ឯករាជ្យភាពមូលដ្ឋាន (Local Sovereignty)**៖ រាល់ការណែនាំ ច្បាប់ ការចងចាំ និងស្គ្រីបរបស់ភ្នាក់ងារគឺស្ថិតនៅក្នុងថត `.agents/` ផ្ទាល់នៃគម្រោងរបស់អ្នក។

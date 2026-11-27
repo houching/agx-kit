@@ -1,0 +1,25 @@
+---
+interface Props {
+  number: number;
+  title: string;
+}
+
+const { number, title } = Astro.props;
+---
+
+<div class="relative flex gap-4 pb-8 last:pb-0 group">
+  <!-- Connector line between steps -->
+  <div class="absolute left-[15px] top-9 bottom-0 w-px bg-[var(--v-line)] group-last:hidden"></div>
+  <!-- Step number badge -->
+  <div class="relative z-10 flex-none w-8 h-8 rounded-full border border-[var(--v-brand)]/40 bg-[var(--v-surface)] flex items-center justify-center text-[var(--v-brand)] font-mono font-bold text-sm shadow-sm">
+    {number}
+  </div>
+  <div class="flex-1 min-w-0 pt-0.5">
+    <h3 class="font-semibold text-base text-[var(--v-text)] mt-0 mb-2">
+      {title}
+    </h3>
+    <div class="text-[var(--v-text-2)] text-sm leading-relaxed [&>p]:mb-2">
+      <slot />
+    </div>
+  </div>
+</div>

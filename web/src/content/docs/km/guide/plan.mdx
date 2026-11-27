@@ -1,0 +1,84 @@
+﻿---
+title: ការរៀបចំផែនការគម្រោង (Project Planning)
+description: បង្កើតផែនការការងារលម្អិតមុនពេលសរសេរកូដតាមរយៈលំហូរការងារ /plan។
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, Callout } from '@/components/mdx';
+
+បង្កើតផែនការអនុវត្តការងារលម្អិតមុនពេលសរសេរកូដតាមរយៈលំហូរការងារ `/plan`។
+
+---
+
+## ទិដ្ឋភាពទូទៅ (Overview)
+
+ពាក្យបញ្ជា `/plan` ដំណើរការ **របៀបរៀបចំផែនការសុទ្ធសាធ (planning-only mode)**។
+វាប្រើប្រាស់ភ្នាក់ងារ `project-planner` ដើម្បីបង្កើតឯកសារផែនការលម្អិតដោយមិនសរសេរកូដឡើយ។
+
+<Callout type="info" title="វិធានការតឹងរ៉ឹង៖">
+  **មិនមានកូដណាមួយត្រូវបានសរសេរកំឡុងពេលរៀបចំផែនការឡើយ។** មានតែឯកសារផែនការ `{task-slug}.md` (នៅ root នៃគម្រោង) ប៉ុណ្ណោះដែលត្រូវបានបង្កើត។
+</Callout>
+
+---
+
+## ដំណើរការការងារ (The Process)
+
+<StepList>
+  <Step number={1} title="រៀបរាប់ពីគម្រោងរបស់អ្នក">
+    ប្រាប់អ្នករៀបចំផែនការពីអ្វីដែលអ្នកចង់បង្កើត។
+
+    ```bash
+    /plan e-commerce site with cart and checkout
+    ```
+  </Step>
+  <Step number={2} title="សំណួរបែប Socratic">
+    អ្នករៀបចំផែនការសួរសំណួរដេញដោលអំពីតម្រូវការមុនពេលបង្កើតផែនការ។
+  </Step>
+  <Step number={3} title="បង្កើតផែនការរួចរាល់">
+    បង្កើតឯកសារ `{task-slug}.md` នៅ root នៃគម្រោងជាមួយកិច្ចការ និងការបែងចែកភ្នាក់ងារ។
+  </Step>
+</StepList>
+
+---
+
+## ឧទាហរណ៍ជាក់ស្តែង (Example Session)
+
+<Terminal>
+  <TerminalLine type="user">/plan SaaS dashboard with analytics</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**Clarifying Questions:**</TerminalLine>
+    <div class="text-amber-400 text-xs mt-2 space-y-1">
+      <div>1. តើចង់បាន metrics អ្វីខ្លះ? (active users, revenue?)</div>
+      <div>2. Real-time ឬតាមចន្លោះពេល polling?</div>
+      <div>3. Charting library ណាដែលអ្នកពេញចិត្ត?</div>
+    </div>
+  </TerminalBlock>
+
+  <TerminalLine type="user">Users + revenue, real-time, Recharts</TerminalLine>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**✅ Plan Created!**</TerminalLine>
+    <div class="text-xs text-[var(--v-text-2)] mt-1">`saas-dashboard.md`</div>
+    <div class="text-xs text-[var(--v-text-3)] mt-1">ដំណើរការ `/create` ដើម្បីចាប់ផ្តើមអនុវត្តកូដ។</div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## គន្លឹះមានប្រយោជន៍ (Pro Tips)
+
+<ProTips>
+  <Tip title="ឆ្លើយឱ្យបានក្បោះក្បាយ">
+    បរិបទដែលអ្នកផ្តល់ឱ្យកាន់តែច្រើន នោះផែនការដែលបង្កើតឡើងនឹងកាន់តែមានប្រសិទ្ធភាពខ្ពស់។
+  </Tip>
+  <Tip title="កែសម្រួលផែនការតាមចិត្ត">
+    ឯកសារ `{task-slug}.md` អាចកែសម្រួលបានដោយសេរីមុនពេលចាប់ផ្តើមសរសេរកូដ។
+  </Tip>
+</ProTips>
+
+---
+
+## ជំហានបន្ទាប់ (Next Steps)
+
+- ដំណើរការ `/plan` សម្រាប់មុខងារធំបន្ទាប់របស់អ្នក
+- បន្ទាប់ពីរៀបចំផែនការរួច សូមប្រើ [ការបង្កើតកម្មវិធីថ្មី (Create New Application)](/km/guide/create/) ដើម្បីអនុវត្ត

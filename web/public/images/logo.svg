@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="title">
+  <title id="title">AGX Kit — Forge Amber symbol</title>
+  <g id="symbol">
+    <path fill="#141416" fill-rule="evenodd" d="M48 20 H208 L236 48 V208 L208 236 H48 L20 208 V48 Z M115 60 H139 L159 100 L179 60 H203 L171 124 L203 188 H179 L159 148 L139 188 H115 L132 154 H92 L75 188 H51 Z M127 84 L102 134 H142 L147 124 Z"/>
+    <path fill="#F59E0B" fill-rule="evenodd" d="M115 60 H139 L159 100 L179 60 H203 L171 124 L203 188 H179 L159 148 L139 188 H115 L132 154 H92 L75 188 H51 Z M127 84 L102 134 H142 L147 124 Z"/>
+  </g>
+</svg>

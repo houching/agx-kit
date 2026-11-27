@@ -1,0 +1,68 @@
+---
+title: Skills
+description: Domain-specific knowledge modules that agents load automatically.
+---
+
+import { Callout, StepList, Step, SkillCatalog } from '@/components/mdx';
+
+Domain-specific knowledge modules that agents load automatically.
+
+---
+
+## What are Skills?
+
+Skills are modular knowledge packages that contain principles, patterns, and decision-making frameworks for specific domains. They're loaded automatically when an agent needs them.
+
+Unlike hard-coded templates, skills teach *principles* — enabling agents to make contextual decisions rather than copying patterns.
+
+<Callout type="info" title="Automatic Loading">
+  Skills are loaded on-demand based on task context. You don't need to configure anything manually.
+</Callout>
+
+---
+
+## How Skills Work
+
+When you invoke an agent, it automatically loads relevant skills based on:
+
+<StepList>
+  <Step number={1} title="Agent Configuration">
+    Each agent specifies which skills it can access in its frontmatter.
+  </Step>
+  <Step number={2} title="Task Context">
+    The AI reads skill descriptions and dynamically resolves relevant ones for your request.
+  </Step>
+  <Step number={3} title="Selective Reading">
+    Only necessary sections are read into memory to optimize context and token spend.
+  </Step>
+</StepList>
+
+---
+
+## Skill Categories
+
+AGX Kit includes **56 skills** organized by domain:
+
+<SkillCatalog />
+
+---
+
+## Skill Structure
+
+Each skill is a directory containing a `SKILL.md` file:
+
+```markdown
+---
+name: nextjs-react-expert
+description: Next.js & React performance optimization
+version: 1.0.0
+category: Frontend & UI
+---
+
+# Next.js & React Expert
+
+## Principles
+1. Eliminate waterfalls
+2. Optimize bundle size
+3. Server-side rendering first
+```

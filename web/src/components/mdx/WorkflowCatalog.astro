@@ -1,0 +1,29 @@
+---
+import workflowsData from '../../data/workflows.json';
+
+const workflows = workflowsData.map(wf => ({
+  ...wf,
+  usage: `${wf.command} [args]`
+}));
+---
+
+<div class="not-content space-y-4 my-6">
+  {workflows.map((wf) => (
+    <div class="p-4 rounded-xl border border-[var(--v-line)] bg-[var(--v-surface)] hover:border-amber-500/30 transition-colors">
+      <div class="flex items-center justify-between gap-3 mb-2">
+        <code class="text-sm font-mono font-semibold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded border border-amber-500/20">
+          {wf.command}
+        </code>
+      </div>
+      <p class="text-xs text-[var(--v-text-2)] mb-3 leading-relaxed">
+        {wf.description}
+      </p>
+      <div class="pt-2 border-t border-[var(--v-line)]/50 flex items-center gap-2">
+        <span class="text-[10px] uppercase font-semibold text-[var(--v-text-2)]">Usage:</span>
+        <code class="text-xs font-mono text-[var(--v-text-1)] bg-[var(--v-surface-2)] px-2 py-0.5 rounded border border-[var(--v-line)]">
+          {wf.usage}
+        </code>
+      </div>
+    </div>
+  ))}
+</div>

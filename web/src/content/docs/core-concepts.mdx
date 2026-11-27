@@ -1,0 +1,49 @@
+---
+title: Core Concepts
+description: Architectural foundation and core pillars of the AGX Kit agent runtime.
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+AGX Kit transforms standard repositories into agent-ready workspaces by enforcing clear boundaries, cryptographic integrity, and specialist division of labor.
+
+---
+
+## The 5 Core Pillars
+
+<CardGrid>
+  <Card title="Specialist Agents" icon="seti:graphql">
+    20 isolated agent personas categorized by role (orchestrator, planner, coder, reviewer, security). Strict division of labor prevents scope creep.
+    
+    [Explore Agents &rarr;](/agents/)
+  </Card>
+  <Card title="Domain Skills" icon="open-book">
+    45 modular knowledge packs covering clean code, modern frontend frameworks, systems programming (Go/Rust), security audits, and testing.
+    
+    [Explore Skills &rarr;](/skills/)
+  </Card>
+  <Card title="Workflows & Slash Commands" icon="rocket">
+    Standardized interactive workflows (`/brainstorm`, `/plan`, `/create`, `/debug`, `/deploy`) guiding agents through reproducible development cycles.
+    
+    [Explore Workflows &rarr;](/workflows/)
+  </Card>
+  <Card title="Antigravity Runtime" icon="setting">
+    Native integration with Google Antigravity including `antigravity.json`, MCP registries, safety doctor scripts, and `PreToolUse` policy gates.
+    
+    [Explore Runtime &rarr;](/antigravity/)
+  </Card>
+  <Card title="Managed Updates & Rollback" icon="approve-check">
+    Cryptographically tracked `.agents/` managed tree using SHA-256 integrity hashes in `manifest.lock.json`, supporting non-destructive upgrades and instant rollbacks.
+    
+    [Explore Updates &rarr;](/updates/)
+  </Card>
+</CardGrid>
+
+---
+
+## Architectural Principles
+
+1. **Leaf-First Dependency Resolution**: Changes are validated starting from leaf modules before touching orchestration layers.
+2. **Oracle Parity & Zero Tampering**: Existing tests and baselines are immutable truth. Fix implementations, never weaken assertions.
+3. **High-Density Technical Aesthetics**: Built on the Vantage design language (`#0d0f12` slate canvas, 1px structural hairlines, tabular monospace data).
+4. **Local Sovereignty**: All agent instructions, memory, rules, and scripts live inside `.agents/` in your repository.

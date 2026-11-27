@@ -1,0 +1,102 @@
+---
+interface Props {
+  lang?: "en" | "km";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = {
+  en: {
+    eyebrow: "FAQ",
+    title: "Frequently Asked Questions",
+    items: [
+      {
+        question: "What is AGX Kit?",
+        answer: "AGX Kit is an open-source toolkit of AI agent skills, specialist agents, workflows, and a CLI that safely installs and updates them in your projects.",
+      },
+      {
+        question: "How do I install it in my project?",
+        answer: "Run `bun add -d github:houching/agx-kit` or install via git clone. AGX Kit downloads `.agents/` and generates a manifest file tracking every component.",
+      },
+      {
+        question: "Will updating overwrite my customizations?",
+        answer: "No. The default update strategy is merge. Clean managed files are updated automatically; files you created or modified are preserved; and conflicts create backup copies alongside a detailed conflict report.",
+      },
+      {
+        question: "Which AI environments work with AGX Kit?",
+        answer: "AGX Kit is built specifically for Google Antigravity, while also functioning seamlessly with Claude Code, Cursor, Codex, and any modern agent runtime that respects local project rules and skills.",
+      },
+      {
+        question: "Is AGX Kit free to use?",
+        answer: "Yes, AGX Kit is 100% free and open-source under the MIT license.",
+      },
+    ],
+  },
+  km: {
+    eyebrow: "សំណួរញឹកញាប់",
+    title: "សំណួរដែលសួរញឹកញាប់ (FAQ)",
+    items: [
+      {
+        question: "តើ AGX Kit ជាអ្វី?",
+        answer: "AGX Kit គឺជាកញ្ចប់ឧបករណ៍ open-source នៃជំនាញ AI agent, ភ្នាក់ងារឯកទេស, លំហូរការងារ និង CLI ដែលដំឡើង និងអាប់ដេតពួកវាដោយសុវត្ថិភាពនៅក្នុងគម្រោងរបស់អ្នក។",
+      },
+      {
+        question: "តើខ្ញុំអាចដំឡើងវាក្នុងគម្រោងយ៉ាងដូចម្តេច?",
+        answer: "ដំណើរការ `bun add -d github:houching/agx-kit`។ AGX Kit នឹងទាញយកថត `.agents/` និងបង្កើតឯកសារ manifest តាមដានសមាសធាតុទាំងអស់។",
+      },
+      {
+        question: "តើការអាប់ដេតនឹងលុបការកែសម្រួលរបស់ខ្ញុំដែរឬទេ?",
+        answer: "ទេ! យុទ្ធសាស្ត្រអាប់ដេតលំនាំដើមគឺ merge។ ឯកសារដើមត្រូវបានអាប់ដេតដោយស្វ័យប្រវត្តិ ចំណែកឯកសារដែលអ្នកបានកែប្រែត្រូវបានរក្សាទុកដោយសុវត្ថិភាព។",
+      },
+      {
+        question: "តើបរិស្ថាន AI ណាខ្លះអាចដំណើរការជាមួយ AGX Kit?",
+        answer: "AGX Kit ត្រូវបានបង្កើតឡើងជាពិសេសសម្រាប់ Google Antigravity ហើយក៏អាចដំណើរការបានយ៉ាងរលូនជាមួយ Claude Code, Cursor, Codex និងប្រព័ន្ធ agent ទំនើបៗទាំងអស់។",
+      },
+      {
+        question: "តើ AGX Kit ប្រើប្រាស់ដោយឥតគិតថ្លៃដែរឬទេ?",
+        answer: "បាទ/ចាស! AGX Kit គឺឥតគិតថ្លៃ 100% និងជាកូដប្រភពបើកចំហ (Open Source) ក្រោមអាជ្ញាប័ណ្ណ MIT។",
+      },
+    ],
+  },
+}[lang];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": copy.items.map(({ question, answer }) => ({
+    "@type": "Question",
+    "name": question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": answer,
+    },
+  })),
+};
+---
+
+<section id="faq" class="container mx-auto max-w-[760px] px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+  <div class="mb-10 text-center">
+    <p class="mb-2 text-lg tracking-wider text-brand font-medium">{copy.eyebrow}</p>
+    <h2 class="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+      {copy.title}
+    </h2>
+  </div>
+
+  <div class="space-y-4">
+    {copy.items.map(({ question, answer }) => (
+      <details class="group rounded-xl border border-border bg-card p-5 transition-colors hover:border-brand/40 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex cursor-pointer items-center justify-between text-base font-semibold text-foreground">
+          <span>{question}</span>
+          <span class="ml-4 text-brand transition-transform duration-200 group-open:rotate-180">
+            <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </span>
+        </summary>
+        <p class="mt-4 border-t border-border pt-3 text-sm leading-relaxed text-muted-foreground">
+          {answer}
+        </p>
+      </details>
+    ))}
+  </div>
+</section>

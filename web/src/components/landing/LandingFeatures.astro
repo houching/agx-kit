@@ -1,0 +1,125 @@
+---
+interface Props {
+  lang?: "en" | "km";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = {
+  en: {
+    eyebrow: "Features",
+    title: "What makes AGX Kit different",
+    subtitle: "A full agent capability pack, not a single prompt template - designed for real projects and safe upgrades over time.",
+    items: [
+      {
+        icon: "bot",
+        title: "Specialist agents",
+        description: "Frontend, backend, security, database, mobile, and more - each with a focused system prompt and skill set.",
+      },
+      {
+        icon: "puzzle",
+        title: "Domain skills",
+        description: "56 skills covering architecture, spec-driven development, testing, i18n, SEO, GEO, deployment, and clean code standards.",
+      },
+      {
+        icon: "workflow",
+        title: "Guided workflows",
+        description: "Slash commands for spec, brainstorm, plan, create, debug, test, preview, status, orchestrate, verify, and deploy.",
+      },
+      {
+        icon: "terminal",
+        title: "Simple CLI",
+        description: "init, update, rollback, and status with dry-run, merge/replace strategies, and conflict reports.",
+      },
+      {
+        icon: "refresh",
+        title: "Merge-safe updates",
+        description: "SHA-256 baseline tracking separates clean files, local modifications, and true three-way conflicts before writing.",
+      },
+      {
+        icon: "folder",
+        title: "Docs synced with kit",
+        description: "Installation guides, CLI reference, and localized examples kept in lockstep with the toolkit version.",
+      },
+    ],
+  },
+  km: {
+    eyebrow: "លក្ខណៈពិសេស",
+    title: "អ្វីដែលធ្វើឱ្យ AGX Kit មានភាពខុសប្លែក",
+    subtitle: "កញ្ចប់សមត្ថភាពពេញលេញសម្រាប់ agent មិនមែនគ្រាន់តែជា prompt ធម្មតា — រចនាឡើងសម្រាប់គម្រោងជាក់ស្តែង។",
+    items: [
+      {
+        icon: "bot",
+        title: "ភ្នាក់ងារឯកទេស",
+        description: "Frontend, backend, security, database, mobile និងច្រើនទៀត - នីមួយៗមាន system prompt និងជំនាញជាក់លាក់។",
+      },
+      {
+        icon: "puzzle",
+        title: "ជំនាញតាមផ្នែក",
+        description: "ជំនាញចំនួន 56 គ្របដណ្តប់លើស្ថាបត្យកម្ម ការអភិវឌ្ឍផ្អែកលើ spec ការធ្វើតេស្ត i18n SEO GEO ការដាក់ឱ្យដំណើរការ និងកូដស្អាត។",
+      },
+      {
+        icon: "workflow",
+        title: "លំហូរការងារណែនាំ",
+        description: "ពាក្យបញ្ជា slash សម្រាប់ spec, brainstorm, plan, create, debug, test, preview, status, orchestrate, verify និង deploy។",
+      },
+      {
+        icon: "terminal",
+        title: "CLI ងាយស្រួលប្រើ",
+        description: "init, update, rollback និង status ជាមួយ dry-run យុទ្ធសាស្ត្រ merge/replace និងរបាយការណ៍ជម្លោះ។",
+      },
+      {
+        icon: "refresh",
+        title: "ការអាប់ដេតបែប Merge-Safe",
+        description: "ការតាមដាន SHA-256 បំបែកឯកសារដើម ការកែសម្រួលក្នុងស្រុក និងជម្លោះ 3-way មុនពេលសរសេរជាន់លើ។",
+      },
+      {
+        icon: "folder",
+        title: "ឯកសារស្របគ្នាជាមួយ Kit",
+        description: "ការណែនាំដំឡើង ឯកសារយោង CLI និងឧទាហរណ៍ជាភាសាខ្មែរត្រូវបានធ្វើបច្ចុប្បន្នភាពជាប់ជានិច្ច។",
+      },
+    ],
+  },
+}[lang];
+---
+
+<section id="features" class="container mx-auto px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+  <p class="mb-2 text-center text-lg tracking-wider text-brand font-medium">
+    {copy.eyebrow}
+  </p>
+  <h2 class="mb-4 text-center text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+    {copy.title}
+  </h2>
+  <p class="mx-auto mb-12 max-w-2xl text-center text-lg text-muted-foreground md:text-xl leading-relaxed">
+    {copy.subtitle}
+  </p>
+
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {copy.items.map(({ icon, title, description }) => (
+      <article class="flex h-full flex-col items-center rounded-2xl border border-border bg-card p-6 text-center shadow-xs transition-colors hover:border-brand/40">
+        <div class="mb-5 flex size-14 items-center justify-center rounded-full bg-brand/15 ring-8 ring-brand/10">
+          {icon === "bot" && (
+            <svg class="size-6 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+          )}
+          {icon === "puzzle" && (
+            <svg class="size-6 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.439 7.85c0-1.57.802-2.54 1.561-2.54 1.34 0 2 1.34 2 2.68 0 1.34-.66 2.68-2 2.68-.759 0-1.561-.97-1.561-2.54M4.561 7.85c0-1.57-.802-2.54-1.561-2.54-1.34 0-2 1.34-2 2.68 0 1.34.66 2.68 2 2.68.759 0 1.561-.97 1.561-2.54M12 2v2a2 2 0 1 0 4 0V2h4a2 2 0 0 1 2 2v4a2 2 0 1 1 0 4v4a2 2 0 0 1-2 2h-4v-2a2 2 0 1 0-4 0v2H8a2 2 0 0 1-2-2v-4a2 2 0 1 1 0-4V4a2 2 0 0 1 2-2z"/></svg>
+          )}
+          {icon === "workflow" && (
+            <svg class="size-6 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
+          )}
+          {icon === "terminal" && (
+            <svg class="size-6 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+          )}
+          {icon === "refresh" && (
+            <svg class="size-6 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+          )}
+          {icon === "folder" && (
+            <svg class="size-6 text-brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+          )}
+        </div>
+        <h3 class="mb-2 text-lg font-semibold text-foreground">{title}</h3>
+        <p class="text-sm leading-relaxed text-muted-foreground">{description}</p>
+      </article>
+    ))}
+  </div>
+</section>

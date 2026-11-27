@@ -1,0 +1,11 @@
+---
+interface Props {
+  highlight?: boolean;
+}
+
+const { highlight = false } = Astro.props;
+---
+
+<div class={`pl-4 border-l-2 mb-4 space-y-1 ${highlight ? 'border-[var(--v-brand)]' : 'border-[var(--v-line)]'}`}>
+  <slot />
+</div>

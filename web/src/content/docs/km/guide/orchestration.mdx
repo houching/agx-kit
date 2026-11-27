@@ -1,0 +1,98 @@
+﻿---
+title: ការសម្របសម្រួល Multi-Agent (Multi-Agent Orchestration)
+description: បង្កើត SaaS platform ទាំងមូលដោយសម្របសម្រួល specialist agents ជាច្រើនតាមរយៈលំហូរការងារ /orchestrate។
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, FeatureGrid, Feature, StatusList, StatusItem } from '@/components/mdx';
+
+បង្កើត SaaS platform ទាំងមូលដោយសម្របសម្រួល specialist agents ជាច្រើនតាមរយៈលំហូរការងារ `/orchestrate`។
+
+---
+
+## ទិដ្ឋភាពទូទៅ (Overview)
+
+អន្តរកម្ម AI ភាគច្រើនគឺបែប 1-ទល់នឹង-1។ `orchestrator` agent ផ្លាស់ប្តូរចំណុចនេះដោយដើរតួជា **Project Manager** ស្វ័យប្រវត្ត។
+វាបំបែកសំណើធំៗ (ឧទាហរណ៍ "បង្កើត SaaS MVP") ទៅជាកិច្ចការតូចៗ និងចាត់តាំងទៅកាន់ specialist ដែលស័ក្តិសមបំផុត។
+
+<FeatureGrid>
+  <Feature title="Backend" description="ស្ថាបត្យករ API & DB" />
+  <Feature title="Frontend" description="អ្នកជំនាញ UI/UX" />
+  <Feature title="Security" description="សវនករសុវត្ថិភាព" />
+  <Feature title="QA" description="វិស្វករតេស្ត" />
+</FeatureGrid>
+
+---
+
+## ដំណើរការការងារ (The Process)
+
+<StepList>
+  <Step number={1} title="សង្ខេបគម្រោង (Project Brief)">
+    ពិពណ៌នាអំពីគោលដៅកម្រិតខ្ពស់របស់អ្នក។ orchestrator នឹងសម្ភាសអ្នកដើម្បីបញ្ជាក់តម្រូវការ៖
+
+    ```bash
+    /orchestrate Build a "Course Platform" MVP with:
+    - User Authentication (Auth.js)
+    - Stripe Payments
+    - Video Hosting (Mux)
+    - Dashboard for Instructors
+    ```
+  </Step>
+  <Step number={2} title="ដំណាក់កាលទី 1: រៀបចំផែនការ (Planning)">
+    `project-planner` agent បង្កើតផែនការលម្អិត (`{task-slug}.md` នៅក្នុង root នៃគម្រោង)។
+
+    <div class="bg-[var(--v-surface)] p-3 rounded-lg text-xs font-mono border-l-2 border-teal-500 mt-2 text-[var(--v-text-2)]">
+      ...<br/>
+      ### 2.1 Database Schema<br/>
+      - Users (id, email, role)<br/>
+      - Courses (id, title, price)<br/>
+      ...
+    </div>
+  </Step>
+  <Step number={3} title="ដំណាក់កាលទី 2: អនុវត្តការងារ (Execution)">
+    Agent ធ្វើការស្របគ្នា។ Orchestrator ត្រួតពិនិត្យវឌ្ឍនភាព និងដោះស្រាយបញ្ហារាំងស្ទះ។
+  </Step>
+</StepList>
+
+---
+
+## ឧទាហរណ៍ជាក់ស្តែង (Example Session)
+
+<Terminal>
+  <TerminalLine type="user">/orchestrate Build E-commerce MVP</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**🚀 កំពុងដំណើរការក្រុមការងារ Agent (Activating Squad)...**</TerminalLine>
+    ចាត់តាំងការងារផ្អែកលើផែនការ `ecommerce-mvp.md`៖
+  </TerminalBlock>
+
+  <StatusList>
+    <StatusItem status="running" label="Backend-Specialist">កំពុងកំណត់រចនាសម្ព័ន្ធ Prisma Schema...</StatusItem>
+    <StatusItem status="running" label="Frontend-Specialist">កំពុងសាងសង់សមាសភាគ ProductCard...</StatusItem>
+    <StatusItem status="running" label="Security-Auditor">កំពុងពិនិត្យឡើងវិញនូវលំហូរ Auth...</StatusItem>
+  </StatusList>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**✅ គម្រោងបានបញ្ចប់ជាស្ថាពរ!**</TerminalLine>
+    រាល់កិច្ចការត្រូវបានបញ្ចប់។ ដំណើរការ `bun run dev` ដើម្បីចាប់ផ្តើម។
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## គន្លឹះមានប្រយោជន៍ (Pro Tips)
+
+<ProTips>
+  <Tip title="ចាប់ផ្តើមពីតូច">
+    កុំព្យាយាមបង្កើតប្រព័ន្ធធំក្នុងពេលតែមួយ។ ចាប់ផ្តើមពី MVP ជាមុនសិន បន្ទាប់មកប្រើ `/enhance` ដើម្បីពង្រីក។
+  </Tip>
+  <Tip title="កំណត់វិធីសាស្ត្រ Auth ជាមុន">
+    បញ្ជាក់ជានិច្ចនូវរបៀបដែលអ្នកប្រើប្រាស់ចូលគណនី (ឧទាហរណ៍ "ប្រើ Auth.js ជាមួយ GitHub")។ វាជាការសម្រេចចិត្តស្ថាបត្យកម្មដ៏សំខាន់។
+  </Tip>
+</ProTips>
+
+---
+
+## ជំហានបន្ទាប់ (Next Steps)
+
+- សិក្សាអំពី [ការកែកំហុសជាប្រព័ន្ធ (Systematic Debugging)](/km/guide/debugging/) ដើម្បីថែទាំកម្មវិធីរបស់អ្នក
+- មើល [ការដាក់ពង្រាយផលិតកម្ម (Production Deployment)](/km/guide/deployment/) ដើម្បីបញ្ចេញ MVP របស់អ្នកជាផ្លូវការ

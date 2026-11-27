@@ -1,0 +1,91 @@
+﻿---
+title: ការដោះស្រាយបញ្ហាកូដតាមប្រព័ន្ធ (Systematic Debugging)
+description: ដោះស្រាយបញ្ហាស្មុគស្មាញដោយប្រើប្រាស់លំហូរការងារដ៏ម៉ត់ចត់នៃ /debug។
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, Callout } from '@/components/mdx';
+
+ដោះស្រាយបញ្ហាស្មុគស្មាញដោយប្រើប្រាស់លំហូរការងារដ៏ម៉ត់ចត់នៃ `/debug`។
+
+---
+
+## ទិដ្ឋភាពទូទៅ (Overview)
+
+លំហូរការងារ `/debug` អនុវត្ត **ពិធីការស៊ើបអង្កេត ៤ ដំណាក់កាល** (Discovery, Hypothesis, Verification, Resolution)។ វាការពារការកូដបែបស្មានៗ ដោយតម្រូវឱ្យមានភស្តុតាងជាក់ស្តែងមុនពេលកែប្រែកូដ។
+
+<Callout type="info" title="ពេលណាត្រូវប្រើ៖">
+  - "ចុចប៊ូតុង Login តែគ្មានអ្វីកើតឡើងទាល់តែសោះ"
+  - "API ឆ្លើយតប error 500 មិនទៀងទាត់"
+  - "កម្មវិធីគាំងតែនៅលើ mobile ប៉ុណ្ណោះ"
+</Callout>
+
+---
+
+## ដំណើរការការងារ (The Process)
+
+<StepList>
+  <Step number={1} title="ការស្វែងរកការពិត (Discovery)">
+    ប្រមូលការពិត៖ error logs, របាយការណ៍អ្នកប្រើប្រាស់, ជំហានបង្កបញ្ហា។
+
+    ```bash
+    /debug Login returns 403 even with correct credentials
+    ```
+  </Step>
+  <Step number={2} title="ការបង្កើតសម្មតិកម្ម (Hypothesis)">
+    កំណត់មូលហេតុដែលអាចកើតមាន ផ្អែកលើភស្តុតាង និងលទ្ធភាពខ្ពស់។
+  </Step>
+  <Step number={3} title="ការផ្ទៀងផ្ទាត់ (Verification)">
+    ធ្វើតេស្តសម្មតិកម្មនីមួយៗជាប្រព័ន្ធតាមរយៈស្គ្រីប ឬ log ដាច់ដោយឡែក។
+  </Step>
+  <Step number={4} title="ការដោះស្រាយ (Resolution)">
+    អនុវត្តការកែកូដឱ្យចំគោលដៅ និងបន្ថែមតេស្ត regression ស្វ័យប្រវត្តិ។
+  </Step>
+</StepList>
+
+---
+
+## ឧទាហរណ៍ជាក់ស្តែង (Example Session)
+
+<Terminal>
+  <TerminalLine type="user">/debug Form submission fails silently</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**Phase 1: Discovery**</TerminalLine>
+    <div>កំពុងអាន `CheckoutForm.tsx`... រកឃើញ `handleSubmit`។</div>
+    <div class="text-rose-400">ERROR: Cannot read properties of undefined</div>
+  </TerminalBlock>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**Phase 2: Hypothesis**</TerminalLine>
+    <div class="text-xs space-y-1 mt-1 text-[var(--v-text-2)]">
+      <div>1. `emailRef.current` ស្មើ null ពេល mount component</div>
+      <div>2. Event handler មិនត្រូវបានភ្ជាប់ត្រឹមត្រូវ</div>
+    </div>
+  </TerminalBlock>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**Phase 4: Resolution**</TerminalLine>
+    <div>បានអនុវត្តដំណោះស្រាយ៖ បន្ថែម null check លើ `emailRef`។</div>
+    <div class="text-emerald-400">✅ តេស្តបានឆ្លងកាត់៖ Form ដំណើរការបានជោគជ័យ។</div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## គន្លឹះមានប្រយោជន៍ (Pro Tips)
+
+<ProTips>
+  <Tip title="ផ្តល់បរិបទឱ្យបានច្បាស់">
+    ចម្លង error message ឬ stack trace ជាក់ស្តែងដាក់ក្នុង prompt ដើម្បីឱ្យការស្វែងរកការពិតកាន់តែលឿន។
+  </Tip>
+  <Tip title="ជឿជាក់ ប៉ុន្តែត្រូវផ្ទៀងផ្ទាត់">
+    ប្រាប់ភ្នាក់ងារឱ្យដំណើរការករណី reproduction ម្តងទៀត ដើម្បីបញ្ជាក់ថាកំហុសត្រូវបានដោះស្រាយពិតប្រាកដ។
+  </Tip>
+</ProTips>
+
+---
+
+## ជំហានបន្ទាប់ (Next Steps)
+
+- សាកល្បងប្រើ `/debug` លើបញ្ហាដែលមានស្រាប់
+- មើល [ការដាក់ពង្រាយផលិតកម្ម (Production Deployment)](/km/guide/deployment/) ដើម្បីបញ្ចេញកូដកែតម្រូវ

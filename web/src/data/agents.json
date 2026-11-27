@@ -1,0 +1,265 @@
+[
+    {
+        "name": "backend-specialist",
+        "description": "backend-specialist",
+        "skills": [
+            "api-patterns",
+            "bash-linux",
+            "clean-code",
+            "database-design",
+            "lint-and-validate",
+            "mcp-builder",
+            "nodejs-best-practices",
+            "powershell-windows",
+            "python-patterns",
+            "rust-pro"
+        ]
+    },
+    {
+        "name": "bot-playtester",
+        "description": "bot-playtester",
+        "skills": [
+            "bash-linux",
+            "clean-code",
+            "powershell-windows",
+            "testing-patterns",
+            "verify-changes"
+        ]
+    },
+    {
+        "name": "code-archaeologist",
+        "description": "code-archaeologist",
+        "skills": [
+            "clean-code",
+            "code-review-checklist",
+            "simplify-code"
+        ]
+    },
+    {
+        "name": "darkcode",
+        "description": "darkcode",
+        "skills": [
+            "clean-code",
+            "darkcode",
+            "rea",
+            "red-team-tactics",
+            "systematic-debugging",
+            "vulnerability-scanner"
+        ]
+    },
+    {
+        "name": "database-architect",
+        "description": "database-architect",
+        "skills": [
+            "clean-code",
+            "database-design"
+        ]
+    },
+    {
+        "name": "debugger",
+        "description": "debugger",
+        "skills": [
+            "clean-code",
+            "systematic-debugging"
+        ]
+    },
+    {
+        "name": "devops-engineer",
+        "description": "devops-engineer",
+        "skills": [
+            "bash-linux",
+            "clean-code",
+            "deployment-procedures",
+            "powershell-windows",
+            "server-management"
+        ]
+    },
+    {
+        "name": "documentation-writer",
+        "description": "documentation-writer",
+        "skills": [
+            "clean-code",
+            "documentation-templates"
+        ]
+    },
+    {
+        "name": "engine-tools-builder",
+        "description": "engine-tools-builder",
+        "skills": [
+            "clean-code",
+            "frontend-architecture",
+            "gpui",
+            "testing-patterns"
+        ]
+    },
+    {
+        "name": "explorer-agent",
+        "description": "explorer-agent",
+        "skills": [
+            "architecture",
+            "brainstorming",
+            "clean-code",
+            "plan-writing",
+            "systematic-debugging"
+        ]
+    },
+    {
+        "name": "frontend-specialist",
+        "description": "frontend-specialist",
+        "skills": [
+            "clean-code",
+            "design-spec",
+            "frontend-architecture",
+            "frontend-design",
+            "gpui",
+            "lint-and-validate",
+            "logo-design",
+            "nextjs-react-expert",
+            "tailwind-patterns",
+            "web-design-guidelines"
+        ]
+    },
+    {
+        "name": "game-developer",
+        "description": "game-developer",
+        "skills": [
+            "clean-code",
+            "game-development"
+        ]
+    },
+    {
+        "name": "mobile-developer",
+        "description": "mobile-developer",
+        "skills": [
+            "clean-code",
+            "design-spec",
+            "mobile-design"
+        ]
+    },
+    {
+        "name": "orchestrator",
+        "description": "orchestrator",
+        "skills": [
+            "architecture",
+            "bash-linux",
+            "behavioral-modes",
+            "brainstorming",
+            "clean-code",
+            "context-compression",
+            "coordinator-mode",
+            "lint-and-validate",
+            "memory-system",
+            "parallel-agents",
+            "plan-writing",
+            "powershell-windows",
+            "verify-changes"
+        ]
+    },
+    {
+        "name": "penetration-tester",
+        "description": "penetration-tester",
+        "skills": [
+            "api-patterns",
+            "clean-code",
+            "red-team-tactics",
+            "vulnerability-scanner"
+        ]
+    },
+    {
+        "name": "performance-optimizer",
+        "description": "performance-optimizer",
+        "skills": [
+            "clean-code",
+            "performance-profiling"
+        ]
+    },
+    {
+        "name": "product-manager",
+        "description": "product-manager",
+        "skills": [
+            "brainstorming",
+            "clean-code",
+            "plan-writing"
+        ]
+    },
+    {
+        "name": "product-owner",
+        "description": "product-owner",
+        "skills": [
+            "brainstorming",
+            "clean-code",
+            "plan-writing"
+        ]
+    },
+    {
+        "name": "project-planner",
+        "description": "project-planner",
+        "skills": [
+            "app-builder",
+            "brainstorming",
+            "clean-code",
+            "plan-writing"
+        ]
+    },
+    {
+        "name": "qa-automation-engineer",
+        "description": "qa-automation-engineer",
+        "skills": [
+            "clean-code",
+            "lint-and-validate",
+            "testing-patterns",
+            "web-design-guidelines",
+            "webapp-testing"
+        ]
+    },
+    {
+        "name": "security-auditor",
+        "description": "security-auditor",
+        "skills": [
+            "api-patterns",
+            "clean-code",
+            "red-team-tactics",
+            "vulnerability-scanner"
+        ]
+    },
+    {
+        "name": "seo-specialist",
+        "description": "seo-specialist",
+        "skills": [
+            "clean-code",
+            "geo-fundamentals",
+            "seo-fundamentals"
+        ]
+    },
+    {
+        "name": "spatial-physics-architect",
+        "description": "spatial-physics-architect",
+        "skills": [
+            "bash-linux",
+            "clean-code",
+            "powershell-windows",
+            "testing-patterns"
+        ]
+    },
+    {
+        "name": "test-engineer",
+        "description": "test-engineer",
+        "skills": [
+            "clean-code",
+            "code-review-checklist",
+            "lint-and-validate",
+            "tdd-workflow",
+            "testing-patterns",
+            "webapp-testing"
+        ]
+    },
+    {
+        "name": "worker",
+        "description": "Fast, scoped code-execution subagent on the flash tier",
+        "skills": [
+            "clean-code",
+            "lint-and-validate",
+            "verify-changes"
+        ]
+    }
+]

@@ -1,0 +1,68 @@
+---
+interface Props {
+  lang?: "en" | "km";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = {
+  en: {
+    title: "Everything in one toolkit",
+    items: [
+      { name: "24 Agents", icon: "bot" },
+      { name: "56 Skills", icon: "blocks" },
+      { name: "16 Workflows", icon: "workflow" },
+      { name: "CLI", icon: "terminal" },
+      { name: "Merge-safe", icon: "shield" },
+      { name: "Open source", icon: "branch" },
+    ],
+  },
+  km: {
+    title: "អ្វីៗគ្រប់យ៉ាងនៅក្នុងកញ្ចប់ឧបករណ៍តែមួយ",
+    items: [
+      { name: "24 Agents", icon: "bot" },
+      { name: "56 ជំនាញ", icon: "blocks" },
+      { name: "16 លំហូរការងារ", icon: "workflow" },
+      { name: "CLI", icon: "terminal" },
+      { name: "អាប់ដេតប្រកបដោយសុវត្ថិភាព", icon: "shield" },
+      { name: "កូដបើកចំហ (Open Source)", icon: "branch" },
+    ],
+  },
+}[lang];
+
+const repeated = [...copy.items, ...copy.items];
+---
+
+<section id="stack" class="mx-auto w-full max-w-[90%] pb-16 sm:max-w-[75%] sm:pb-24">
+  <h2 class="mb-8 text-center text-lg text-muted-foreground md:text-xl">
+    {copy.title}
+  </h2>
+
+  <div class="relative w-full overflow-hidden">
+    <div class="landing-marquee flex w-max gap-12">
+      {repeated.map(({ name, icon }) => (
+        <div class="flex items-center gap-2 text-xl font-medium text-foreground/80 md:text-2xl">
+          {icon === "bot" && (
+            <svg class="size-7 text-brand shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+          )}
+          {icon === "blocks" && (
+            <svg class="size-7 text-brand shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="14" y="3" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/></svg>
+          )}
+          {icon === "workflow" && (
+            <svg class="size-7 text-brand shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
+          )}
+          {icon === "terminal" && (
+            <svg class="size-7 text-brand shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+          )}
+          {icon === "shield" && (
+            <svg class="size-7 text-brand shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          )}
+          {icon === "branch" && (
+            <svg class="size-7 text-brand shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+          )}
+          <span>{name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

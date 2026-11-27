@@ -1,0 +1,146 @@
+﻿---
+title: ពាក្យបញ្ជា និងជម្រើស (Commands & Options)
+description: ឯកសារណែនាំពេញលេញនៃ command-line interface សម្រាប់ @houching/agx-kit។
+---
+
+import { Callout, Terminal, TerminalLine, TerminalBlock } from '@/components/mdx';
+
+`@houching/agx-kit` CLI គ្រប់គ្រងការដំឡើង ការថែទាំ និងការផ្ទៀងផ្ទាត់នៃ `.agents/` runtime នៅក្នុង repository គម្រោងរបស់អ្នក។
+
+---
+
+## ពាក្យបញ្ជា (Commands)
+
+### `agx-kit init`
+
+ចាប់ផ្តើមដំណើរការ AGX Kit ក្នុងថតការងារបច្ចុប្បន្ន ដោយបង្កើតថត `.agents` និងឯកសារ `manifest.json`។
+
+<Terminal>
+  <TerminalLine type="user">bunx agx-kit init</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs space-y-1">
+      <div class="text-emerald-400">✔ Initialized AGX Kit runtime</div>
+      <div>បានបង្កើត .agents/ (30 agents, 40 skills, 10 workflows)</div>
+      <div>បានបង្កើត manifest.json & manifest.lock.json</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+<div class="bg-[var(--v-surface)] p-4 rounded-lg border border-[var(--v-line)] mb-6 text-sm">
+  <div class="font-semibold text-[var(--v-text-1)] mb-2">ឥរិយាបថ (Behavior)</div>
+  <ul class="text-[var(--v-text-2)] space-y-1 text-xs">
+    <li>• សរសេរនិយមន័យ agent និងការណែនាំលំនាំដើមទៅកាន់ <code>.agents/</code></li>
+    <li>• បង្កើត <code>manifest.json</code> និង <code>manifest.lock.json</code></li>
+    <li>• បញ្ឈប់ដោយសុវត្ថិភាពប្រសិនបើ <code>.agents/</code> មានរួចហើយ លើកលែងតែមានការបញ្ជាក់ <code>--force</code></li>
+  </ul>
+</div>
+
+---
+
+### `agx-kit update`
+
+អាប់ដេតថត `.agents` ដែលមានស្រាប់ជាមួយនិយមន័យ toolkit ចុងក្រោយបំផុត។
+
+<Terminal>
+  <TerminalLine type="user">bunx agx-kit update</TerminalLine>
+</Terminal>
+
+<Callout type="warning" title="សេចក្តីជូនដំណឹងអំពីការកែប្រែដោយផ្ទាល់">
+  ការកែប្រែឯកសារគ្រប់គ្រងដោយ kit ដោយផ្ទាល់អាចបណ្តាលឱ្យមានជម្លោះ update។ សូមប្រើប្រាស់ local overrides ឬការកំណត់ agent ផ្ទាល់ខ្លួនតាមដែលអាចធ្វើទៅបាន។
+</Callout>
+
+<div class="bg-[var(--v-surface)] p-4 rounded-lg border border-[var(--v-line)] mb-6 text-sm">
+  <div class="font-semibold text-[var(--v-text-1)] mb-2">ឥរិយាបថ (Behavior)</div>
+  <ul class="text-[var(--v-text-2)] space-y-1 text-xs">
+    <li>• បង្កើត backup មុនពេល update ដោយស្វ័យប្រវត្តក្នុង <code>.agents/.agx-kit/backups/</code></li>
+    <li>• ប្រើប្រាស់យុទ្ធសាស្ត្រ <code>merge</code> តាមលំនាំដើម៖ រក្សាការកែប្រែក្នុងស្រុករបស់អ្នក និងរក្សាទុកច្បាប់ចម្លងថ្មីដែលមានជម្លោះក្នុង <code>.agents/.agx-kit/conflicts/</code></li>
+    <li>• គាំទ្រ <code>--strategy replace</code> សម្រាប់ការធ្វើសមកាលកម្ម upstream ស្អាតដូចដើម</li>
+  </ul>
+</div>
+
+---
+
+### `agx-kit rollback`
+
+ស្តារ `.agents/` ទៅកាន់ស្ថានភាពមុនពីការ backup ស្វ័យប្រវត្តិ។
+
+<Terminal>
+  <TerminalLine type="user">bunx agx-kit rollback</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs space-y-1">
+      <div>? ស្តារ backup 2026-07-26T16-03-21 ឡើងវិញ? (y/N) <span class="text-teal-400">y</span></div>
+      <div class="text-emerald-400">បានស្តារ backup 2026-07-26T16-03-21 រួចរាល់</div>
+      <div class="text-[var(--v-text-2)]">Pre-rollback backup: .agents/.agx-kit/backups/...</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+<div class="bg-[var(--v-surface)] p-4 rounded-lg border border-[var(--v-line)] mb-6 text-sm">
+  <div class="font-semibold text-[var(--v-text-1)] mb-2">ឥរិយាបថ (Behavior)</div>
+  <ul class="text-[var(--v-text-2)] space-y-1 text-xs">
+    <li>• បង្ហាញបញ្ជី backup ដែលបានបង្កើតក្នុងអំឡុងពេល <code>init</code> ឬ <code>update</code> កន្លងមក</li>
+    <li>• ស្នើសុំការបញ្ជាក់មុនពេលស្តារឯកសារឡើងវិញ</li>
+    <li>• បង្កើត backup នៃស្ថានភាពបច្ចុប្បន្នមុនពេល rollback</li>
+  </ul>
+</div>
+
+---
+
+### `agx-kit status`
+
+បង្ហាញស្ថានភាពបច្ចុប្បន្ននៃការដំឡើង AGX Kit រួមទាំងកំណែ ឯកសារដែលបានកែប្រែ និងការត្រួតពិនិត្យភាពសុចរិត។
+
+<Terminal>
+  <TerminalLine type="user">bunx agx-kit status</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs space-y-1 font-mono">
+      <div>Version: 1.0.0</div>
+      <div>Managed files: 142 total, 0 modified</div>
+      <div>Backups: 2 available in .agents/.agx-kit/backups/</div>
+      <div class="text-emerald-400">Status: Clean</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## ជម្រើស និងទង់កំណត់ (Options & Flags)
+
+| ជម្រើស | ការពិពណ៌នា |
+|---|---|
+| `-f, --force` | បង្ខំឱ្យសរសេរជាន់លើថត `.agents` ដែលមានស្រាប់ក្នុងកំឡុងពេល `init` ឬ `update`។ |
+| `-p, --path <dir>` | ថតគោលដៅសម្រាប់ការដំឡើង (លំនាំដើមគឺថតការងារបច្ចុប្បន្ន)។ |
+| `-b, --branch <name>` | មែកធាង Git ឬ tag ដែលត្រូវដំឡើង។ |
+| `-q, --quiet` | បិទការបង្ហាញលទ្ធផលដែលមិនមែនជាកំហុសកំឡុងពេលដំណើរការ។ |
+| `--dry-run` | មើលឯកសារសាកល្បងដែលនឹងត្រូវបង្កើត, update, ឬមានជម្លោះ ដោយមិនសរសេរទៅលើថាស។ |
+| `--strategy <merge\|replace>` | យុទ្ធសាស្ត្រសម្រាប់ការ update: `merge` (លំនាំដើម, រក្សាឯកសារផ្ទាល់ខ្លួន) ឬ `replace` (សរសេរជាន់ថ្មីទាំងអស់)។ |
+| `--no-backup` | រំលងការបង្កើត backup ស្វ័យប្រវត្តមុនពេលកែប្រែឯកសារ។ |
+| `--conflict-report <file>` | ផ្លូវឯកសារដែលត្រូវសរសេររបាយការណ៍ជម្លោះជា JSON។ |
+
+---
+
+## ឧទាហរណ៍ទូទៅ (Common Examples)
+
+### បង្ខំឱ្យដំឡើងឡើងវិញ
+
+```bash
+bunx agx-kit init --force
+```
+
+### ការសាកល្បង Update ជាមុន (Dry Run)
+
+```bash
+bunx agx-kit update --dry-run
+```
+
+### ការ Update ដោយប្រើ Replace Strategy
+
+```bash
+bunx agx-kit update --strategy replace
+```
+
+### ការស្តារ Backup ជាក់លាក់ណាមួយ
+
+```bash
+bunx agx-kit rollback --backup 2026-07-26T16-03-21
+```

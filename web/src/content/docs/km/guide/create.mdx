@@ -1,0 +1,86 @@
+﻿---
+title: ការបង្កើតកម្មវិធីថ្មី (Create New Application)
+description: បង្កើតកម្មវិធីពេញលេញពីដំបូងតាមរយៈការណែនាំរបស់ /create wizard។
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, Callout, StatusList, StatusItem } from '@/components/mdx';
+
+បង្កើតកម្មវិធីពេញលេញពីដំបូងតាមរយៈការណែនាំរបស់ `/create` wizard។
+
+---
+
+## ទិដ្ឋភាពទូទៅ (Overview)
+
+ពាក្យបញ្ជា `/create` គឺជា **application creation wizard** របស់អ្នក។
+វាណែនាំអ្នកឆ្លងកាត់ការសន្ទនាអន្តរកម្ម ស្វែងយល់ពីតម្រូវការរបស់អ្នក
+រៀបចំផែនការស្ថាបត្យកម្ម និងសម្របសម្រួលភ្នាក់ងារឯកទេសដើម្បីបង្កើតកម្មវិធីរបស់អ្នក។
+
+<Callout type="info">
+  **ពីគំនិតទៅជាកម្មវិធីដែលដំណើរការជាក់ស្តែង៖** គ្រាន់តែរៀបរាប់ពីអ្វីដែលអ្នកចង់បាន នោះ wizard នឹងចាត់ចែងរៀបចំ tech stack, រចនាសម្ព័ន្ធឯកសារ, database schema និងការសរសេរកូដដោយភ្នាក់ងារជំនាញ។
+</Callout>
+
+---
+
+## ដំណើរការការងារ (The Process)
+
+<StepList>
+  <Step number={1} title="រៀបរាប់ពីកម្មវិធីរបស់អ្នក">
+    ប្រាប់ wizard ពីអ្វីដែលអ្នកចង់បង្កើត។ វានឹងសួរសំណួរបញ្ជាក់បន្ថែមប្រសិនបើចាំបាច់។
+
+    ```bash
+    /create e-commerce site with product listing and cart
+    ```
+  </Step>
+  <Step number={2} title="ពិនិត្យមើលផែនការ">
+    ភ្នាក់ងារ `project-planner` បង្កើតផែនការលម្អិត។ យល់ព្រមដើម្បីបន្ត។
+  </Step>
+  <Step number={3} title="ភ្នាក់ងារចាប់ផ្តើមសរសេរកូដ">
+    ភ្នាក់ងារឯកទេសធ្វើការស្របគ្នា៖ database-architect, backend, frontend។
+  </Step>
+</StepList>
+
+---
+
+## ឧទាហរណ៍ជាក់ស្តែង (Example Session)
+
+<Terminal>
+  <TerminalLine type="user">/create todo app with dark mode</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**Analyzing request...**</TerminalLine>
+    <div>Tech Stack: Next.js + Tailwind + Zustand</div>
+    <div class="text-amber-300 mt-1">Proceed? (Y/N)</div>
+  </TerminalBlock>
+
+  <TerminalLine type="user">Y</TerminalLine>
+
+  <StatusList>
+    <StatusItem status="running" label="Backend">កំពុងបង្កើត store និង state model...</StatusItem>
+    <StatusItem status="running" label="Frontend">កំពុងបង្កើត components ជាមួយស្ទីល Vantage...</StatusItem>
+  </StatusList>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**🚀 App Created!**</TerminalLine>
+    <div>មើលកម្មវិធីផ្ទាល់៖ <span class="text-teal-400">http://localhost:3000</span></div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## គន្លឹះមានប្រយោជន៍ (Pro Tips)
+
+<ProTips>
+  <Tip title="បញ្ជាក់ឱ្យជាក់លាក់">
+    "E-commerce ជាមួយ Stripe" ផ្តល់លទ្ធផលល្អជាង "online store" ធម្មតា។
+  </Tip>
+  <Tip title="ចាប់ផ្តើមពីភាពសាមញ្ញ">
+    បង្កើត MVP ជាមុនសិន បន្ទាប់មកប្រើ `/enhance` ដើម្បីបន្ថែមមុខងារជាបន្តបន្ទាប់។
+  </Tip>
+</ProTips>
+
+---
+
+## ជំហានបន្ទាប់ (Next Steps)
+
+- ដំណើរការ `/create` តាមដោយគំនិតកម្មវិធីរបស់អ្នក
+- ប្រើ [ការបន្ថែមមុខងារថ្មី (Add a New Feature)](/km/guide/new-feature/) ដើម្បីពង្រីកកម្មវិធី

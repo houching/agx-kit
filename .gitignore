@@ -1,0 +1,32 @@
+# Dependencies and generated output
+node_modules/
+.next/
+.astro/
+.wrangler/
+out/
+build/
+dist/
+coverage/
+
+# AGX Kit temporary and backup data
+.temp_agx_kit/
+.agx-kit-backups/
+
+# Local editor / OS files
+.DS_Store
+*.py[cod]
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Ensure the toolkit directory is never hidden by a user's global gitignore
+!.agents
+!.agents/
+
+# Project-local/private directories
+/agx-kit-doc/
+/tests/
+/others/
+/.claude/
+/demo/

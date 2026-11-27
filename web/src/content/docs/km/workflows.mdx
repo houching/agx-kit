@@ -1,0 +1,58 @@
+﻿---
+title: លំហូរការងារ (Workflows)
+description: នីតិវិធីពាក្យបញ្ជា slash commands សម្រាប់កិច្ចការអភិវឌ្ឍទូទៅ។
+---
+
+import { Callout, Terminal, TerminalLine, WorkflowCatalog } from '@/components/mdx';
+
+នីតិវិធីពាក្យបញ្ជា Slash command សម្រាប់កិច្ចការអភិវឌ្ឍន៍ទូទៅ។
+
+---
+
+## តើអ្វីជា Workflows? (What are Workflows?)
+
+Workflows គឺជានីតិវិធីមួយជំហានម្តងៗដែលត្រូវបានកំណត់យ៉ាងច្បាស់លាស់ សម្រាប់ការសម្រេចកិច្ចការអភិវឌ្ឍន៍ជាក់លាក់។ ពួកវាត្រូវបានដំណើរការតាមរយៈពាក្យបញ្ជា slash commands និងផ្តល់នូវដំណើរការដែលអាចធ្វើឡើងវិញបានប្រកបដោយស្ថេរភាព។
+
+Workflow នីមួយៗរួមបញ្ចូលនូវការណែនាំជាក់លាក់, ចំណុចធ្វើការសម្រេចចិត្ត, និងការអនុវត្តល្អបំផុតសម្រាប់វិស័យរបស់វា។
+
+---
+
+## របៀបប្រើប្រាស់ Workflows (How to Use Workflows)
+
+គ្រាន់តែវាយបញ្ចូល slash command តាមដោយការពិពណ៌នាអំពីកិច្ចការរបស់អ្នក៖
+
+<Terminal>
+  <TerminalLine type="user">/brainstorm authentication system</TerminalLine>
+  <TerminalLine type="user">/create landing page with hero section</TerminalLine>
+  <TerminalLine type="user">/debug why login fails</TerminalLine>
+</Terminal>
+
+<Callout type="tip" title="ការដំណើរការល្បឿនលឿន (Turbo Execution)">
+  Workflows មួយចំនួនគាំទ្រកំណត់ចំណាំ <code>// turbo</code> ដែលអនុញ្ញាតឱ្យដំណើរការពាក្យបញ្ជាសុវត្ថិភាពដោយស្វ័យប្រវត្តដោយមិនចាំបាច់មានការយល់ព្រមដោយដៃគ្រប់ជំហានឡើយ។
+</Callout>
+
+---
+
+## បញ្ជី Workflows ដែលមានស្រាប់ (Available Workflows)
+
+AGX Kit រួមបញ្ចូល **Standardized Workflows ទាំងអស់ចំនួន 16**៖
+
+<WorkflowCatalog />
+
+---
+
+## រចនាសម្ព័ន្ធរបស់ Workflow (Workflow Structure)
+
+Workflow នីមួយៗត្រូវបានកំណត់នៅក្នុង `.agents/workflows/<command>.md`៖
+
+```markdown
+---
+description: Structured ideation and architectural evaluation
+---
+
+# /brainstorm
+
+1. Socratic exploration (3+ alternatives)
+2. Trade-off matrix (pros, cons, effort)
+3. User decision gate
+```

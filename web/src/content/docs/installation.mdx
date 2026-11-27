@@ -1,0 +1,84 @@
+---
+title: Installation
+description: How to install AGX Kit via Bun and Git SSH URLs.
+---
+
+import { Callout, StepList, Step, Terminal, TerminalLine, TerminalBlock } from '@/components/mdx';
+
+Learn how to install AGX Kit and configure it for Gemini CLI and Google Antigravity.
+
+---
+
+## Method 1: Global CLI Install (Recommended)
+
+Install `agx-kit` globally from GitHub so you can run `agx-kit` commands directly in any project:
+
+<StepList>
+  <Step number={1} title="Install the CLI globally">
+    ```bash
+    bun add -g github:houching/agx-kit
+    # Or using npm
+    npm install -g github:houching/agx-kit
+    ```
+  </Step>
+  <Step number={2} title="Initialize or update any project">
+    ```bash
+    agx-kit init
+    # Later, safely pull upstream updates
+    agx-kit update
+    ```
+  </Step>
+</StepList>
+
+<Terminal>
+  <TerminalLine type="user">agx-kit init</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs space-y-1">
+      <div class="text-cyan-400">Initializing .agents runtime...</div>
+      <div class="text-emerald-400">✅ Created .agents/ (agents, skills, workflows, rules, hooks)</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## Method 2: Per-Project Install (`bunx` / `npx`)
+
+If you prefer keeping `agx-kit` scoped to a single repository's `devDependencies`:
+
+<StepList>
+  <Step number={1} title="Add to project devDependencies via Git URL">
+    ```bash
+    bun add -d github:houching/agx-kit
+    # Or using npm
+    npm install -D github:houching/agx-kit
+    ```
+  </Step>
+  <Step number={2} title="Initialize the toolkit">
+    ```bash
+    bunx agx-kit init
+    ```
+  </Step>
+</StepList>
+
+---
+
+## Directory Structure
+
+After initialization, your project contains the standard `.agents/` runtime:
+
+```text
+.agents/
+├── agent/           # 20 Specialist AI Agents
+├── skills/          # 45 Domain-specific skills
+├── workflows/       # 13 Slash commands
+├── rules/           # Workspace and tier rules
+├── hooks/           # Native Antigravity safety gates & doctor
+├── memory/          # Persistent cross-session project memory
+├── ARCHITECTURE.md  # Architectural reference map
+└── antigravity.json # Antigravity runtime declaration
+```
+
+<Callout type="tip" title="Git Exclusion">
+  If you prefer not to commit <code>.agents/</code> to your repository, add it to your <code>.git/info/exclude</code> or global <code>.gitignore_global</code>.
+</Callout>

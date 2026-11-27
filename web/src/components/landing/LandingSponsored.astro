@@ -1,0 +1,99 @@
+---
+interface Props {
+  lang?: "en" | "km";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = {
+  en: {
+    eyebrow: "Sponsored",
+    title: "Proudly supported by developers",
+    subtitle: "AGX Kit is free and open-source. Backing helps keep the agents and skills sharp.",
+    becomeTitle: "Become a Sponsor",
+    becomeDesc: "Support open source AI agent tooling and put your company in front of engineers worldwide.",
+    talk: "Talk to Us",
+    coffee: "Buy us a coffee",
+    wantBrand: "Want your brand featured here?",
+    reachOut: "Reach out on GitHub",
+  },
+  km: {
+    eyebrow: "អ្នកឧបត្ថម្ភ",
+    title: "គាំទ្រដោយមោទនភាពពីអ្នកអភិវឌ្ឍន៍",
+    subtitle: "AGX Kit គឺមិនគិតថ្លៃ និងជាប្រភពបើកចំហ។ ការគាំទ្រជួយរក្សាឱ្យ agent និងជំនាញមានភាពទាន់សម័យ។",
+    becomeTitle: "ក្លាយជាអ្នកឧបត្ថម្ភ",
+    becomeDesc: "គាំទ្រឧបករណ៍ AI agent ប្រភពបើកចំហ និងបង្ហាញក្រុមហ៊ុនរបស់អ្នកទៅកាន់វិស្វករជុំវិញពិភពលោក។",
+    talk: "ជជែកជាមួយយើង",
+    coffee: "ទិញកាហ្វេជូនយើង",
+    wantBrand: "ចង់បង្ហាញម៉ាកសញ្ញារបស់អ្នកនៅទីនេះ?",
+    reachOut: "ទាក់ទងមកយើងតាមរយៈ GitHub",
+  },
+}[lang];
+---
+
+<section id="sponsored" class="container mx-auto px-4 py-16 sm:py-20 md:py-28 sm:px-6 lg:px-8">
+  <p class="mb-2 text-center text-lg tracking-wider text-brand font-medium">
+    {copy.eyebrow}
+  </p>
+  <h2 class="mb-4 text-center text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+    {copy.title}
+  </h2>
+  <p class="mx-auto mb-10 sm:mb-12 max-w-2xl text-center text-base sm:text-lg text-muted-foreground leading-relaxed">
+    {copy.subtitle}
+  </p>
+
+  <div class="mx-auto max-w-2xl">
+    <!-- Become a Sponsor Card -->
+    <div class="flex flex-col justify-between rounded-2xl border border-dashed border-border bg-muted/30 p-6 sm:p-8">
+      <div>
+        <div class="mb-4 flex size-12 items-center justify-center rounded-full bg-brand/15 text-brand">
+          <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        </div>
+        <h3 class="mb-2 text-xl font-bold text-foreground">{copy.becomeTitle}</h3>
+        <p class="text-sm leading-relaxed text-muted-foreground">
+          {copy.becomeDesc}
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="https://github.com/houching"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex w-full min-h-[44px] items-center justify-center rounded-lg bg-zinc-900 text-zinc-50 hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-zinc-200 px-6 py-3 text-base font-semibold shadow-xs transition-colors no-underline"
+        >
+          {copy.talk}
+        </a>
+        <a
+          href="https://www.patreon.com/houching"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex w-full min-h-[44px] items-center justify-center rounded-lg border border-border bg-card px-6 py-3 text-base font-semibold text-foreground shadow-xs hover:bg-muted transition-colors no-underline"
+        >
+          {copy.coffee}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto mt-8 sm:mt-10 flex max-w-5xl flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground text-center">
+    <img
+      src="/images/logo.png"
+      alt=""
+      width="20"
+      height="20"
+      class="size-5 rounded opacity-70"
+    />
+    <span>
+      {copy.wantBrand}{" "}
+      <a
+        href="https://github.com/houching/agx-kit"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-medium text-foreground hover:text-brand transition-colors no-underline font-semibold"
+      >
+        {copy.reachOut}
+      </a>
+      .
+    </span>
+  </div>
+</section>

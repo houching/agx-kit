@@ -1,0 +1,92 @@
+---
+title: បរិស្ថាន Runtime Antigravity (Antigravity Runtime)
+description: Google Antigravity គឺជា production runtime របស់ AGX Kit ជាមួយ native hooks, ការធ្វើសមកាលកម្ម MCP និងប្រព័ន្ធវិនិច្ឆ័យ Doctor។
+---
+
+import { FeatureGrid, Feature, Callout, Terminal, TerminalLine, TerminalBlock } from '@/components/mdx';
+
+Google Antigravity គឺជា production runtime របស់ AGX Kit។ ក្រៅពី rules, skills, និង workflows កញ្ចប់នេះភ្ជាប់មកជាមួយ native integration layer នៅខាងក្នុង `.agents/`។
+
+---
+
+## ស្រទាប់ Runtime (The runtime layer)
+
+<FeatureGrid>
+  <Feature title="antigravity.json" description="កិច្ចសន្យា runtime អានដោយម៉ាស៊ីន" />
+  <Feature title="hooks.json" description="របាំងសុវត្ថិភាព PreToolUse" />
+  <Feature title="mcp_config.json" description="ប្រភពពិតប្រាកដនៃ Workspace MCP" />
+  <Feature title="Doctor" description="ប្រព័ន្ធវិនិច្ឆ័យសុចរិតភាពប្រព័ន្ធ" />
+</FeatureGrid>
+
+---
+
+## របាំងសុវត្ថិភាព Tool (Tool safety hook)
+
+`hooks.json` កំណត់រចនាសម្ព័ន្ធ `PreToolUse` gate សម្រាប់ `run_command`។ វាដំណើរការយ៉ាងជាក់លាក់ដើម្បីទប់ស្កាត់លំនាំបញ្ជាដែលមានគ្រោះថ្នាក់ខ្ពស់៖
+
+- ការលុប Root filesystem លើ Unix (`rm -rf /` និងពាក្យបញ្ជាប្រហាក់ប្រហែល)
+- ការ Format filesystem ឬសរសេរជាន់លើ raw-disk (`mkfs`, សរសេរលើ `/dev/sdX`)
+- ការ Format drive ឬបង្ខំលុប Root លើ Windows
+
+ការសម្អាតគម្រោងធម្មតា (លុប `dist/`, `node_modules/`) ត្រូវបានអនុញ្ញាតជាធម្មតា។
+
+<Callout type="warning">
+  Hook នេះមិនជំនួសសិទ្ធិ Antigravity, workspace trust, sandbox, ឬការអនុញ្ញាតដោយមនុស្សឡើយ។ វាជាខ្សែការពារចុងក្រោយ (tripwire) មិនមែនជា security boundary ទាំងមូលនោះទេ។
+</Callout>
+
+---
+
+## ការធ្វើសមកាលកម្ម MCP (MCP synchronization)
+
+`.agents/mcp_config.json` គឺជាប្រភពពិតប្រាកដសម្រាប់ MCP servers ក្នុង workspace។ ឧបករណ៍ជំនួយ sync ដំណើរការយ៉ាងច្បាស់លាស់ — វាមិនព្រមទទួល placeholder credentials, រក្សាទុកធាតុដែលមានជម្លោះតាមលំនាំដើម និង backup គោលដៅមុនពេលសរសេរ៖
+
+<Terminal>
+  <TerminalLine type="user">node .agents/hooks/sync-mcp.mjs</TerminalLine>
+</Terminal>
+
+---
+
+## Antigravity Doctor
+
+Doctor ពិនិត្យមើល discovery, MCP, hooks, orchestration, ការវេចខ្ចប់ plugin និងការត្រៀមបញ្ចេញ — អានតែប៉ុណ្ណោះ (read-only)៖
+
+<Terminal>
+  <TerminalLine type="user">node .agents/hooks/antigravity-doctor.mjs</TerminalLine>
+  <TerminalBlock>
+    <div class="space-y-1 text-xs">
+      <div><span class="text-emerald-400">[PASS]</span> discovery</div>
+      <div><span class="text-emerald-400">[PASS]</span> mcp</div>
+      <div><span class="text-emerald-400">[PASS]</span> hooks</div>
+      <div><span class="text-emerald-400">[PASS]</span> orchestration</div>
+      <div><span class="text-emerald-400">[PASS]</span> plugin</div>
+      <div><span class="text-emerald-400">[PASS]</span> validation</div>
+      <div class="text-teal-400 font-semibold mt-2">[PASS] កិច្ចសន្យា Antigravity រួចរាល់។</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## កញ្ចប់ Plugin (Plugin bundle)
+
+សម្រាប់ក្រុមដែលចង់ដំឡើងជាកញ្ចប់ plugin builder នឹងបង្កើត Antigravity plugin bundle ក្នុងស្រុកដែលមានបញ្ជីសារពើភណ្ឌ SHA-256 ជាក់លាក់៖
+
+<Terminal>
+  <TerminalLine type="user">node .agents/hooks/build-plugin.mjs</TerminalLine>
+</Terminal>
+
+<Callout type="info">
+  អ្វីៗទាំងអស់នៅលើទំព័រនេះត្រូវបានផ្ទៀងផ្ទាត់ក្នុង CI៖ Doctor, តេស្ត hook regression, និងបញ្ជី plugin ដំណើរការរាល់ពេល push កូដ។
+</Callout>
+
+---
+
+## លំនាំ Planner + Flash Worker (Planner + Flash Worker Pattern)
+
+ផ្គូផ្គងម៉ូដែល Planner នៅក្នុងវគ្គមេជាមួយ subagent `worker` ដែលមានដែនកំណត់ (`model: flash`) ដើម្បីសន្សំសំចៃ quota និងជៀសវាងការអានឯកសារទាំងមូលដោយឥតប្រយោជន៍៖
+
+1. **វគ្គមេ (Planner)** — ជ្រើសរើសម៉ូដែល Planner នៅក្នុងកម្មវិធីជ្រើសម៉ូដែល Antigravity (ឬ `/model`)។ រកទីតាំងឯកសារ ជួរបន្ទាត់ និង symbol ជាក់លាក់ជាមុនសិនមុននឹងផ្ទេរភារកិច្ច។
+2. **Scoped worker (`.agents/agents/worker.md`)** — ត្រូវបានរកឃើញដោយផ្ទាល់ដោយ `/agents` របស់ Antigravity។ ដំណើរការលើ `model: flash` ហើយអានតែជួរបន្ទាត់ដែលបានកំណត់ក្នុងឯកសារដែលបានបញ្ជាក់ប៉ុណ្ណោះ។
+3. **ច្បាប់ផ្ទេរភារកិច្ច (`AGENTS.md`)** — ផ្ដល់ផ្លូវឯកសារ ជួរបន្ទាត់ ឬឈ្មោះ symbol ជាក់លាក់ គោលបំណងតូចចង្អៀតមួយ និងពាក្យបញ្ជាផ្ទៀងផ្ទាត់។ កុំផ្ទេរភារកិច្ចកែសម្រួលមួយបន្ទាត់តូចៗ។
+
+ផ្ទៀងផ្ទាត់ការរកឃើញតាម `/agents` (ធានាថា `worker` បង្ហាញក្រោម Available Agents) និងពិនិត្យកំណត់ហេតុ tool ក្នុង Subagent Detail View។

@@ -1,0 +1,68 @@
+---
+title: ជំនាញតាមវិស័យ (Skills)
+description: ម៉ូឌុលចំណេះដឹងតាមវិស័យដែល Agent ផ្ទុកឡើងដោយស្វ័យប្រវត្តិ។
+---
+
+import { Callout, StepList, Step, SkillCatalog } from '@/components/mdx';
+
+ម៉ូឌុលចំណេះដឹងតាមវិស័យជាក់លាក់ដែល agent ដំណើរការផ្ទុកឡើងដោយស្វ័យប្រវត្តិ។
+
+---
+
+## តើអ្វីជា Skills? (What are Skills?)
+
+Skills គឺជាកញ្ចប់ចំណេះដឹងបែបម៉ូឌុលដែលមាន គោលការណ៍ (principles), លំនាំដោះស្រាយ (patterns), និងក្របខ័ណ្ឌធ្វើការសម្រេចចិត្តសម្រាប់វិស័យជាក់លាក់។ ពួកវាត្រូវបានផ្ទុកឡើងដោយស្វ័យប្រវត្តនៅពេល agent ត្រូវការ។
+
+ផ្ទុយពី template រឹងស្តូក ជំនាញទាំងនេះបង្រៀនអំពី *គោលការណ៍គ្រឹះ* — ជួយឱ្យ agent ធ្វើការសម្រេចចិត្តសមស្របតាមបរិបទជាជាងការចម្លងតាមគំរូចាស់ៗ។
+
+<Callout type="info" title="ការផ្ទុកឡើងដោយស្វ័យប្រវត្តិ">
+  Skills ត្រូវបានផ្ទុកឡើងតាមតម្រូវការជាក់ស្តែងនៃបរិបទកិច្ចការ។ អ្នកមិនចាំបាច់កំណត់រចនាសម្ព័ន្ធអ្វីដោយដៃឡើយ។
+</Callout>
+
+---
+
+## របៀបដំណើរការនៃ Skills (How Skills Work)
+
+នៅពេលអ្នកដំណើរការ agent វានឹងផ្ទុកនូវជំនាញពាក់ព័ន្ធដោយស្វ័យប្រវត្តផ្អែកលើ៖
+
+<StepList>
+  <Step number={1} title="ការកំណត់រចនាសម្ព័ន្ធ Agent">
+    Agent នីមួយៗបញ្ជាក់នូវជំនាញណាខ្លះដែលខ្លួនមានសិទ្ធិចូលដំណើរការនៅក្នុង frontmatter របស់ខ្លួន។
+  </Step>
+  <Step number={2} title="បរិបទកិច្ចការ (Task Context)">
+    AI អានការពិពណ៌នាអំពីជំនាញ និងជ្រើសរើសជំនាញដែលពាក់ព័ន្ធនឹងសំណើរបស់អ្នកដោយស្វ័យប្រវត្តិ។
+  </Step>
+  <Step number={3} title="ការអានបែបជ្រើសរើស (Selective Reading)">
+    មានតែផ្នែកដែលចាំបាច់ប៉ុណ្ណោះដែលត្រូវបានអានចូលទៅក្នុង memory ដើម្បីសន្សំសំចៃ token។
+  </Step>
+</StepList>
+
+---
+
+## ប្រភេទជំនាញ (Skill Categories)
+
+AGX Kit រួមបញ្ចូល **56 ជំនាញ** រៀបចំតាមវិស័យ៖
+
+<SkillCatalog />
+
+---
+
+## រចនាសម្ព័ន្ធរបស់ Skill (Skill Structure)
+
+Skill នីមួយៗគឺជាថតឯកសារដែលមានឯកសារ `SKILL.md`៖
+
+```markdown
+---
+name: nextjs-react-expert
+description: Next.js & React performance optimization
+version: 1.0.0
+category: Frontend & UI
+---
+
+# Next.js & React Expert
+
+## Principles
+1. Eliminate waterfalls
+2. Optimize bundle size
+3. Server-side rendering first
+```

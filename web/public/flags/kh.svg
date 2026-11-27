@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-kh" viewBox="0 0 640 480">
+  <path fill="#032ea1" d="M0 0h640v480H0z"/>
+  <path fill="#e00025" d="M0 120h640v240H0z"/>
+  <g fill="#fff">
+    <path d="M192 344h256v12H192zm6-14h244v10H198zm6-12h232v8H204zm20-6h192v4H224zm-14-118h18v114h-18zm206 0h18v114h-18zm-162 30h14v84h-14zm118 0h14v84h-14zm-76-26h28v110h-28z"/>
+    <path d="M306 186l14-28 14 28h-28zm-82 32l10-22 10 22h-20zm164 0l10-22 10 22h-20zm-114 22l8-18 8 18h-16zm64 0l8-18 8 18h-16z"/>
+    <path d="M208 302h224v6H208zm12-40h200v4H220zm24-34h152v4H244z"/>
+    <path d="M298 226h44v4h-44zm-70 22h24v4h-24zm116 0h24v4h-24z"/>
+    <path d="M312 230h16v74h-16zm-58 18h12v56h-12zm104 0h12v56h-12zm-146 14h8v42h-8zm180 0h8v42h-8z"/>
+    <path d="M196 348h248v4H196z"/>
+  </g>
+</svg>

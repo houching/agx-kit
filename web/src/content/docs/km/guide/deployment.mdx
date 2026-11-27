@@ -1,0 +1,102 @@
+﻿---
+title: ការដាក់ពង្រាយផលិតកម្ម (Production Deployment)
+description: ដាក់ឱ្យប្រើប្រាស់ដោយទំនុកចិត្តជាមួយលំហូរការងារ /deploy ដែលផ្តោតលើសុវត្ថិភាពខ្ពស់។
+---
+
+import { Callout, StepList, Step, Terminal, TerminalLine, TerminalBlock, ProTips, Tip } from '@/components/mdx';
+
+ដាក់ឱ្យប្រើប្រាស់ដោយទំនុកចិត្តជាមួយលំហូរការងារ `/deploy` ដែលផ្តោតលើសុវត្ថិភាពខ្ពស់។
+
+---
+
+## ទិដ្ឋភាពទូទៅ (Overview)
+
+ពាក្យបញ្ជា `/deploy` ដើរតួជា **Audit & Release Conductor**។
+វាបង្ខំឱ្យកូដរបស់អ្នកឆ្លងកាត់ការត្រួតពិនិត្យសុខភាពយ៉ាងម៉ត់ចត់មុនពេលដំណើរការ deploy។
+
+<Callout type="info" title="វាបញ្ឈប់អ្នកពីការ deploy ប្រសិនបើ៖">
+  - រកឃើញភាពងាយរងគ្រោះផ្នែកសុវត្ថិភាព (Security vulnerabilities)
+  - មានកំហុស Linting (Linting errors)
+  - ប្រភេទ TypeScript មិនត្រឹមត្រូវ (Invalid types)
+  - តេស្តសំខាន់ៗបរាជ័យ (Failed critical tests)
+</Callout>
+
+---
+
+## ដំណើរការការងារ (The Process)
+
+<StepList>
+  <Step number={1} title="ដំណើរការពាក្យបញ្ជា (Execute Command)">
+    នៅពេលកូដរបស់អ្នករួចរាល់ ចាប់ផ្តើមដំណើរការ deployment pipeline៖
+
+    ```bash
+    /deploy
+    ```
+  </Step>
+  <Step number={2} title="ការត្រួតពិនិត្យមុនបញ្ចេញ (Pre-Flight Checklist)">
+    Agent នឹងធ្វើសវនកម្មសុខភាពគម្រោងរបស់អ្នកដោយស្វ័យប្រវត្តិ៖
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      <div class="bg-[var(--v-surface)] border border-[var(--v-line)] rounded-lg p-3">
+        <h4 class="text-sm font-semibold mb-1 text-[var(--v-text-1)]">🛡️ សុវត្ថិភាព (Security)</h4>
+        <p class="text-xs text-[var(--v-text-2)] m-0">ស្កេនរកភាពងាយរងគ្រោះ និងការធ្លាយ secrets</p>
+      </div>
+      <div class="bg-[var(--v-surface)] border border-[var(--v-line)] rounded-lg p-3">
+        <h4 class="text-sm font-semibold mb-1 text-[var(--v-text-1)]">📋 គុណភាពកូដ (Quality)</h4>
+        <p class="text-xs text-[var(--v-text-2)] m-0">ត្រួតពិនិត្យភាពស្អាតនៃ Linting & Type Safety</p>
+      </div>
+    </div>
+  </Step>
+  <Step number={3} title="ការបញ្ចេញជាផ្លូវការ (Release)">
+    ប្រសិនបើការត្រួតពិនិត្យទាំងអស់បានឆ្លងកាត់ វាដំណើរការ build និង deploy ទៅកាន់ platform គោលដៅ (Vercel, Cloudflare, Docker)។
+  </Step>
+</StepList>
+
+---
+
+## ឧទាហរណ៍ជាក់ស្តែង (Example Session)
+
+<Terminal>
+  <TerminalLine type="user">/deploy</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**🚀 កំពុងដំណើរការការត្រួតពិនិត្យ Pre-Flight...**</TerminalLine>
+    <div class="space-y-1 mt-2 text-xs">
+      <div>🔄 ស្កេនសុវត្ថិភាព... <span class="text-emerald-400">ជាប់ (PASSED)</span></div>
+      <div>🔄 ត្រួតពិនិត្យ Lint... <span class="text-emerald-400">ជាប់ (PASSED)</span></div>
+      <div>🔄 ផ្ទៀងផ្ទាត់ Type... <span class="text-emerald-400">ជាប់ (PASSED)</span></div>
+    </div>
+    <div class="mt-3">
+      <span class="text-emerald-400">✅ ការត្រួតពិនិត្យទាំងអស់បានឆ្លងកាត់!</span>
+      <div class="text-[var(--v-text-2)]">កំពុងដាក់ពង្រាយទៅកាន់ production...</div>
+    </div>
+  </TerminalBlock>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**🚀 ការដាក់ពង្រាយបានជោគជ័យ!**</TerminalLine>
+    <div class="space-y-1 mt-2 text-xs">
+      <div>🌐 URL: <span class="text-teal-400">https://my-app.example.com</span></div>
+      <div>💚 ពិនិត្យសុខភាព: <span class="text-emerald-400">OK</span></div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## គន្លឹះមានប្រយោជន៍ (Pro Tips)
+
+<ProTips>
+  <Tip title="សាកល្បងពិនិត្យជាមុន">
+    ដំណើរការ `/deploy check` ដើម្បីធ្វើការផ្ទៀងផ្ទាត់សាកល្បងដោយមិនទាន់ deploy ពិតប្រាកដ។
+  </Tip>
+  <Tip title="សុវត្ថិភាព Rollback">
+    ប្រើប្រាស់ `/deploy rollback` ដើម្បីបង្វិលត្រឡប់ទៅកំណែមានស្ថេរភាពចុងក្រោយភ្លាមៗ។
+  </Tip>
+</ProTips>
+
+---
+
+## ជំហានបន្ទាប់ (Next Steps)
+
+- សាកល្បង `/deploy check` ដើម្បីដំណើរការ pre-flight checks
+- សិក្សាអំពី [ការសម្របសម្រួល Multi-Agent (Multi-Agent Orchestration)](/km/guide/orchestration/)

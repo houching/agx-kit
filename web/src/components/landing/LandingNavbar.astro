@@ -1,0 +1,245 @@
+---
+interface Props {
+  lang?: "en" | "km";
+}
+
+const { lang = "en" } = Astro.props;
+
+const copy = {
+  en: {
+    nav: {
+      benefits: "Benefits",
+      features: "Features",
+      workflows: "Workflows",
+      sponsored: "Sponsored",
+      faq: "FAQ",
+      docs: "Docs",
+    },
+    docsHref: "/installation/",
+    langLabel: "English",
+    switchLangHref: "/km/",
+    switchLangLabel: "ភាសាខ្មែរ",
+  },
+  km: {
+    nav: {
+      benefits: "អត្ថប្រយោជន៍",
+      features: "លក្ខណៈពិសេស",
+      workflows: "លំហូរការងារ",
+      sponsored: "អ្នកឧបត្ថម្ភ",
+      faq: "សំណួរញឹកញាប់",
+      docs: "ឯកសារ",
+    },
+    docsHref: "/km/installation/",
+    langLabel: "ភាសាខ្មែរ",
+    switchLangHref: "/",
+    switchLangLabel: "English",
+  },
+}[lang];
+
+const routes = [
+  { href: "#benefits", label: copy.nav.benefits },
+  { href: "#features", label: copy.nav.features },
+  { href: "#workflows", label: copy.nav.workflows },
+  { href: "#sponsored", label: copy.nav.sponsored },
+  { href: "#faq", label: copy.nav.faq },
+];
+---
+
+<header class="sticky top-3 sm:top-5 z-40 mx-auto flex w-[94%] sm:w-[90%] md:w-[85%] lg:max-w-screen-xl items-center justify-between rounded-2xl border border-border bg-card/90 p-2 shadow-sm backdrop-blur">
+  <a href={lang === "km" ? "/km/" : "/"} class="flex items-center gap-2 px-2 py-1 font-bold text-lg text-foreground no-underline min-h-[44px]">
+    <img
+      src="/images/logo.png"
+      alt="AGX Kit"
+      width="36"
+      height="36"
+      class="size-9 rounded-lg"
+    />
+    <span>AGX Kit</span>
+  </a>
+
+  <!-- Desktop Nav Links -->
+  <nav class="mx-auto hidden items-center gap-1 lg:flex">
+    {routes.map(({ href, label }) => (
+      <a
+        href={href}
+        class="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground no-underline"
+      >
+        {label}
+      </a>
+    ))}
+    <a
+      href={copy.docsHref}
+      class="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground font-semibold no-underline"
+    >
+      {copy.nav.docs}
+    </a>
+  </nav>
+
+  <!-- Right Actions -->
+  <div class="hidden items-center gap-1.5 lg:flex">
+    <!-- Language Switch -->
+    <a
+      href={copy.switchLangHref}
+      class="inline-flex min-h-[38px] items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors no-underline"
+      title={`Switch to ${copy.switchLangLabel}`}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+      <span>{copy.switchLangLabel}</span>
+    </a>
+
+    <!-- Theme Toggle Desktop -->
+    <button
+      type="button"
+      id="theme-toggle-btn"
+      class="theme-toggle-trigger inline-flex size-9 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors cursor-pointer"
+      aria-label="Toggle theme"
+    >
+      <svg class="theme-icon-sun hidden size-4.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      <svg class="theme-icon-moon hidden size-4.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+
+    <!-- GitHub -->
+    <a
+      href="https://github.com/houching/agx-kit"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="GitHub"
+      class="inline-flex size-9 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors no-underline"
+    >
+      <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+    </a>
+  </div>
+
+  <!-- Mobile Hamburger (≥44px Touch Target) -->
+  <div class="flex items-center gap-2 lg:hidden">
+    <button
+      type="button"
+      id="mobile-menu-btn"
+      class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer"
+      aria-label="Open menu"
+    >
+      <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu Modal -->
+<div id="mobile-menu" class="fixed inset-0 z-50 hidden bg-background/80 backdrop-blur-sm lg:hidden">
+  <div class="fixed inset-y-0 left-0 w-4/5 max-w-xs border-r border-border bg-card p-6 shadow-2xl flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-border mb-4">
+        <a href={lang === "km" ? "/km/" : "/"} class="flex items-center gap-2 font-bold text-lg text-foreground no-underline min-h-[44px]">
+          <img src="/images/logo.png" alt="AGX Kit" class="size-8 rounded-lg" />
+          <span>AGX Kit</span>
+        </a>
+        <button id="mobile-close-btn" class="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground cursor-pointer" aria-label="Close menu">
+          <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <nav class="flex flex-col gap-1">
+        {routes.map(({ href, label }) => (
+          <a
+            href={href}
+            class="mobile-nav-link flex items-center min-h-[44px] rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground no-underline transition-colors"
+          >
+            {label}
+          </a>
+        ))}
+        <a
+          href={copy.docsHref}
+          class="mobile-nav-link flex items-center min-h-[44px] rounded-md px-3 py-2 text-base font-bold text-brand hover:bg-muted no-underline transition-colors"
+        >
+          {copy.nav.docs}
+        </a>
+      </nav>
+    </div>
+
+    <!-- Mobile Drawer Bottom Actions -->
+    <div class="pt-6 border-t border-border flex items-center justify-between">
+      <a
+        href={copy.switchLangHref}
+        class="inline-flex items-center min-h-[44px] text-xs font-semibold text-muted-foreground hover:text-foreground no-underline"
+      >
+        🌐 {copy.switchLangLabel}
+      </a>
+      <div class="flex items-center gap-2">
+        <!-- Theme Toggle Mobile -->
+        <button
+          type="button"
+          class="theme-toggle-trigger min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer"
+          aria-label="Toggle theme"
+        >
+          <svg class="theme-icon-sun hidden size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg class="theme-icon-moon hidden size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+
+        <a
+          href="https://github.com/houching/agx-kit"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground no-underline"
+          aria-label="GitHub"
+        >
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  function syncThemeIcons(theme) {
+    document.querySelectorAll('.theme-icon-sun').forEach(el => {
+      if (theme === 'dark') el.classList.remove('hidden');
+      else el.classList.add('hidden');
+    });
+    document.querySelectorAll('.theme-icon-moon').forEach(el => {
+      if (theme === 'dark') el.classList.add('hidden');
+      else el.classList.remove('hidden');
+    });
+  }
+
+  function getActiveTheme() {
+    return document.documentElement.dataset.theme || 
+      (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+    }
+    localStorage.setItem('starlight-theme', theme);
+    syncThemeIcons(theme);
+  }
+
+  // Initialize theme
+  const currentTheme = document.documentElement.dataset.theme || 
+    localStorage.getItem('starlight-theme') || 
+    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  applyTheme(currentTheme);
+
+  // Bind all theme toggles (desktop and mobile)
+  document.querySelectorAll('.theme-toggle-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const active = getActiveTheme();
+      applyTheme(active === 'dark' ? 'light' : 'dark');
+    });
+  });
+
+  // Mobile menu open / close
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const closeBtn = document.getElementById('mobile-close-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  menuBtn?.addEventListener('click', () => menu?.classList.remove('hidden'));
+  closeBtn?.addEventListener('click', () => menu?.classList.add('hidden'));
+  menu?.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => menu?.classList.add('hidden'));
+  });
+</script>

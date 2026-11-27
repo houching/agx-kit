@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="rounded-xl border border-[var(--v-line)] bg-[var(--v-surface)] p-4 transition-all hover:border-[var(--v-brand)]/40">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="text-base select-none text-[var(--v-brand)]">💡</span>
+    <h4 class="text-sm font-semibold text-[var(--v-text)] m-0">
+      {title}
+    </h4>
+  </div>
+  <div class="text-sm text-[var(--v-text-2)] leading-relaxed [&>p]:mb-0">
+    <slot />
+  </div>
+</div>

@@ -1,0 +1,85 @@
+﻿---
+title: ការគ្រប់គ្រង Preview (Preview Management)
+description: គ្រប់គ្រង dev server ក្នុងស្រុករបស់អ្នកតាមរយៈលំហូរការងារ /preview។
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, FeatureGrid, Feature } from '@/components/mdx';
+
+គ្រប់គ្រង dev server ក្នុងស្រុករបស់អ្នកតាមរយៈលំហូរការងារ `/preview`។
+
+---
+
+## ទិដ្ឋភាពទូទៅ (Overview)
+
+ពាក្យបញ្ជា `/preview` គ្រប់គ្រង dev server ក្នុងស្រុករបស់អ្នក។
+ចាប់ផ្តើម បញ្ឈប់ ចាប់ផ្តើមឡើងវិញ ឬពិនិត្យស្ថានភាពតាមរយៈពាក្យបញ្ជាសាមញ្ញ។
+
+<FeatureGrid>
+  <Feature title="start" description="ដំណើរការ server" />
+  <Feature title="stop" description="បញ្ឈប់ server" />
+  <Feature title="restart" description="ផ្ទុកឡើងវិញបរិស្ថាន" />
+  <Feature title="check" description="ស្ថានភាពសុខភាព" />
+</FeatureGrid>
+
+---
+
+## ដំណើរការការងារ (The Process)
+
+<StepList>
+  <Step number={1} title="ចាប់ផ្តើម Server (Start Server)">
+    ```bash
+    /preview start
+    ```
+  </Step>
+  <Step number={2} title="ពិនិត្យមើលស្ថានភាព (Check Status)">
+    ```bash
+    /preview
+    ```
+  </Step>
+  <Step number={3} title="បញ្ឈប់ Server (Stop Server)">
+    ```bash
+    /preview stop
+    ```
+  </Step>
+</StepList>
+
+---
+
+## ឧទាហរណ៍ជាក់ស្តែង (Example Session)
+
+<Terminal>
+  <TerminalLine type="user">/preview start</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**🚀 កំពុងចាប់ផ្តើម preview...**</TerminalLine>
+    <div class="text-xs text-[var(--v-text-2)] mt-2">
+      <div>Port: 3000</div>
+      <div>ប្រភេទ: Next.js</div>
+    </div>
+  </TerminalBlock>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**✅ Preview រួចរាល់!**</TerminalLine>
+    <div>URL: <span class="text-teal-400">http://localhost:3000</span></div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## គន្លឹះមានប្រយោជន៍ (Pro Tips)
+
+<ProTips>
+  <Tip title="ការរកឃើញស្វ័យប្រវត្ត">
+    រកឃើញ Next.js, Vite, Astro ដោយស្វ័យប្រវត្តិ។
+  </Tip>
+  <Tip title="ការដោះស្រាយជម្លោះ Port">
+    ស្នើ port ជំនួសភ្លាមៗប្រសិនបើ port 3000 ជាប់រវល់។
+  </Tip>
+</ProTips>
+
+---
+
+## ជំហានបន្ទាប់ (Next Steps)
+
+- ដំណើរការ `/preview start` ដើម្បីដំណើរការ dev server របស់អ្នក
+- មើល [ការដាក់ពង្រាយផលិតកម្ម (Production Deployment)](/km/guide/deployment/) នៅពេលអ្នកត្រៀមខ្លួនរួចរាល់សម្រាប់ផលិតកម្ម

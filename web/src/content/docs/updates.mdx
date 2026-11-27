@@ -1,0 +1,70 @@
+﻿---
+title: Managed Updates & Rollback
+description: AGX Kit installs .agents/ as a managed tree with cryptographic integrity, safe merge strategies, and instant rollback.
+---
+
+import { FeatureGrid, Feature, StepList, Step, Callout, Terminal, TerminalLine, TerminalBlock } from '@/components/mdx';
+
+AGX Kit installs `.agents/` as a **managed tree**: every kit file is tracked in a manifest with SHA-256 hashes, so updates know exactly what is yours and what is the kit's.
+
+---
+
+## How the managed tree works
+
+<FeatureGrid>
+  <Feature title="manifest.json" description="Component paths, versions, dependencies" />
+  <Feature title="manifest.lock.json" description="SHA-256 hash per managed file" />
+  <Feature title="Backups" description="Automatic before every change" />
+  <Feature title="Reports" description="Machine-readable update reports" />
+</FeatureGrid>
+
+Files you add or modify are **not** kit-managed, so the default `merge` strategy preserves them. Only files whose hash matches the manifest are updated in place.
+
+---
+
+## Updating safely
+
+<StepList>
+  <Step number={1} title="Preview the plan">
+    ```bash
+    agx-kit update --dry-run
+    ```
+    Shows adds, changes, preserved local files, and conflicts — without touching anything.
+  </Step>
+  <Step number={2} title="Apply the merge">
+    ```bash
+    agx-kit update
+    ```
+    A backup is created first. Local changes are preserved; conflicting files are kept and incoming copies are stored under `.agents/.agx-kit/conflicts/` for review.
+  </Step>
+  <Step number={3} title="Review the report">
+    Each run writes a report with the run ID, strategy, and per-file actions. Use `--conflict-report <file>` to write it to a custom path.
+  </Step>
+</StepList>
+
+<Callout type="info">
+  Want a pristine upstream tree instead? Use `agx-kit update --strategy replace`. A backup is still created first.
+</Callout>
+
+---
+
+## Rolling back
+
+<Terminal>
+  <TerminalLine type="user">agx-kit rollback</TerminalLine>
+  <TerminalBlock>
+    <div class="space-y-1 text-xs">
+      <div>? Restore backup 2026-07-26T16-03-21? (y/N) <span class="text-teal-400">y</span></div>
+      <div class="text-emerald-400">Restored backup 2026-07-26T16-03-21</div>
+      <div class="text-[var(--v-text-2)]">Pre-rollback backup: .agents/.agx-kit/backups/...</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+- Defaults to the newest backup; pick one with `--backup <id>`.
+- The current tree is backed up before restoring (disable with `--no-keep-current`).
+- Preview with `--dry-run`.
+
+<Callout type="warning">
+  Backups live inside your project under `.agents/.agx-kit/`. Deleting that folder removes your rollback points.
+</Callout>

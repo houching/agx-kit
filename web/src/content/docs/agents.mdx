@@ -1,0 +1,78 @@
+---
+title: Agents
+description: Specialist AI personas configured with deep expertise, tools, and behavioral patterns.
+---
+
+import { Callout, Terminal, TerminalLine, TerminalBlock, AgentCatalog } from '@/components/mdx';
+
+Specialist AI personas with deep expertise in specific domains.
+
+---
+
+## What are Agents?
+
+Agents are specialist AI personas configured with domain-specific expertise, tools, and behavioral patterns. Each agent is designed to excel in a particular area of software development.
+
+When you make a request, AGX Kit's **Intelligent Routing** system automatically detects which agents are needed and activates them for you. You can also mention them by name to force a specific perspective.
+
+---
+
+## How to Use Agents
+
+**No need to mention agents explicitly!** The system automatically detects and applies the right specialist(s) based on your request:
+
+<Terminal>
+  <TerminalLine type="user">Add JWT authentication</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs text-teal-400">🤖 Applying @security-auditor + @backend-specialist...</div>
+  </TerminalBlock>
+
+  <TerminalLine type="user">Fix the dark mode button</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs text-teal-400">🤖 Using @frontend-specialist...</div>
+  </TerminalBlock>
+
+  <TerminalLine type="user">Login returns 500 error</TerminalLine>
+  <TerminalBlock>
+    <div class="text-xs text-teal-400">🤖 Using @debugger for systematic analysis...</div>
+  </TerminalBlock>
+</Terminal>
+
+However, you **can still override** this behavior by explicitly mentioning an agent name:
+
+```text
+Use the security-auditor agent to review authentication...
+```
+
+<Callout type="tip" title="Teamwork & Orchestration">
+  Agents can work together! Use the <code>orchestrator</code> agent to coordinate multiple specialists on complex tasks.
+</Callout>
+
+---
+
+## Available Agents
+
+AGX Kit includes **25 specialist agents**:
+
+<AgentCatalog />
+
+---
+
+## Agent Structure
+
+Each agent is defined by a markdown file with YAML frontmatter:
+
+```markdown
+---
+name: frontend-specialist
+description: Frontend architect expert
+tools: Read, Edit, Write, Bash
+skills: nextjs-react-expert, tailwind-patterns, frontend-design
+---
+
+# Frontend Specialist
+
+You are a senior frontend architect...
+```
+
+The `skills` field determines which domain knowledge modules the agent can access.

@@ -1,0 +1,86 @@
+﻿---
+title: Project Status
+description: Get a complete overview of your project with the /status workflow.
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, FeatureGrid, Feature } from '@/components/mdx';
+
+Get a complete overview of your project with the `/status` workflow.
+
+---
+
+## Overview
+
+The `/status` command gives you a **complete dashboard view** of your project.
+See project info, tech stack, completed features, agent activity, and preview status.
+
+<FeatureGrid>
+  <Feature title="Project" description="Info & Stack" />
+  <Feature title="Agents" description="Status Board" />
+  <Feature title="Files" description="Statistics" />
+  <Feature title="Preview" description="Health Check" />
+</FeatureGrid>
+
+---
+
+## The Process
+
+<StepList>
+  <Step number={1} title="Run Command">
+    Simply run the command to see your project dashboard:
+
+    ```bash
+    /status
+    ```
+  </Step>
+</StepList>
+
+---
+
+## Example Session
+
+<Terminal>
+  <TerminalLine type="user">/status</TerminalLine>
+
+  <TerminalBlock>
+    <div class="text-yellow-400 mb-2 font-mono text-xs">=== Project Status ===</div>
+    <div class="space-y-1 mb-4 text-xs">
+      <div>📁 Project: my-ecommerce</div>
+      <div>🏷️ Type: nextjs-ecommerce</div>
+      <div>📄 Files: 73 created, 12 modified</div>
+    </div>
+
+    <div class="text-yellow-400 mb-2 font-mono text-xs">=== Agent Status ===</div>
+    <div class="space-y-1 mb-4 text-xs">
+      <div><span class="text-emerald-400">✅</span> database-architect → Completed</div>
+      <div><span class="text-emerald-400">✅</span> backend-specialist → Completed</div>
+      <div><span class="text-teal-400">🔄</span> frontend-specialist → 60%</div>
+    </div>
+
+    <div class="text-yellow-400 mb-2 font-mono text-xs">=== Preview ===</div>
+    <div class="space-y-1 text-xs">
+      <div>🌐 URL: <span class="text-teal-400">http://localhost:3000</span></div>
+      <div>💚 Health: <span class="text-emerald-400">OK</span></div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## Pro Tips
+
+<ProTips>
+  <Tip title="Before Deploy">
+    Check status to ensure all agents completed and all tasks are resolved.
+  </Tip>
+  <Tip title="Track Progress">
+    Monitor multi-agent orchestration in real-time as subagents complete work.
+  </Tip>
+</ProTips>
+
+---
+
+## Next Steps
+
+- Run `/status` to check project state
+- See [Production Deployment](/guide/deployment/) when ready to ship

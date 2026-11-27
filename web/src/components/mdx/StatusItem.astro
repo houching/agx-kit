@@ -1,0 +1,22 @@
+---
+interface Props {
+  status?: "running" | "done" | "pending";
+  label?: string;
+}
+
+const { status = "running", label } = Astro.props;
+
+const dots = {
+  running: "bg-[var(--v-brand)] animate-pulse ring-2 ring-[var(--v-brand)]/30",
+  done: "bg-emerald-500",
+  pending: "bg-zinc-500",
+};
+---
+
+<div class="flex items-center gap-2.5">
+  <span class={`w-2.5 h-2.5 rounded-full shrink-0 ${dots[status]}`}></span>
+  <span class="text-sm">
+    {label && <strong class="font-semibold text-[var(--v-text)] mr-1">{label}:</strong>}
+    <span class="text-[var(--v-text-2)]"><slot /></span>
+  </span>
+</div>

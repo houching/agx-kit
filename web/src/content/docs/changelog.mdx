@@ -1,0 +1,20 @@
+---
+title: Changelog
+description: Release history, updates, improvements, and fixes for AGX Kit.
+---
+
+import { Badge } from '@astrojs/starlight/components';
+
+Release history and version notes for AGX Kit.
+
+---
+
+## 2026.11.28 — 2026-11-28 <Badge text="Baseline" variant="tip" />
+
+> Clean-slate baseline release 2026.11.28: Antigravity-native AGX Kit (24 agents, 56 skills, 16 workflows, 7 rules), full Bun runtime migration, Astro Starlight bilingual docs (EN/KM) with TypeScript 7.1 content mapper, and Cloudflare Pages deployment.
+
+### Added
+- **Antigravity-Native Baseline:** Complete `.agents/` workspace contract with **24 Specialist Agents**, **56 Skills**, **16 Workflows**, **7 Rules**, persistent memory, MCP sync helper, native `PreToolUse` safety hook, Antigravity Doctor, and deterministic plugin bundle builder.
+- **Bun Runtime & Tooling:** Standardized package management (`bun.lock`), scripts, hooks, CI workflows, Dependabot, and `bun:test` suites on Bun across root, `cli/`, and `web/`.
+- **Astro Starlight Documentation (`web/`):** Vantage Graphite theme, Pagefind build-time search, bilingual English + Khmer (`/km/`) localization with Kantumruy Pro typography, TypeScript 7.1 + `@astrojs/ts-content-mapper`, and Cloudflare Pages deployment.
+- **Safe CLI Lifecycle (`cli/`):** `@houching/agx-kit` with merge-aware `init`, `update`, `rollback`, and `status` commands, Node.js 18+ and Bun compatibility, and npm OIDC Trusted Publishing.

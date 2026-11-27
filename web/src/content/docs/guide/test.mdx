@@ -1,0 +1,88 @@
+﻿---
+title: Test Generation
+description: Generate and run tests with the /test workflow.
+---
+
+import { Terminal, TerminalLine, TerminalBlock, ProTips, Tip, StepList, Step, FeatureGrid, Feature } from '@/components/mdx';
+
+Generate and run tests with the `/test` workflow.
+
+---
+
+## Overview
+
+The `/test` command handles **test generation and execution**.
+Analyze code, create test suites, run tests, or check coverage.
+
+<FeatureGrid>
+  <Feature title="run" description="Execute tests" />
+  <Feature title="generate" description="Create tests" />
+  <Feature title="coverage" description="Coverage report" />
+  <Feature title="watch" description="Live test mode" />
+</FeatureGrid>
+
+---
+
+## The Process
+
+<StepList>
+  <Step number={1} title="Run All Tests">
+    ```bash
+    /test
+    ```
+  </Step>
+  <Step number={2} title="Generate Tests for File">
+    ```bash
+    /test src/auth.ts
+    ```
+  </Step>
+  <Step number={3} title="Check Coverage">
+    ```bash
+    /test coverage
+    ```
+  </Step>
+</StepList>
+
+---
+
+## Example Session
+
+<Terminal>
+  <TerminalLine type="user">/test src/services/auth.ts</TerminalLine>
+
+  <TerminalBlock>
+    <TerminalLine type="agent">**Analyzing auth.ts...**</TerminalLine>
+    <div class="text-xs text-[var(--v-text-2)] mt-2">
+      Found 4 functions: login, register, verifyToken, resetPassword
+    </div>
+  </TerminalBlock>
+
+  <TerminalBlock highlight>
+    <TerminalLine type="agent">**✅ Tests Generated!**</TerminalLine>
+    <div class="text-xs text-[var(--v-text-2)] mt-2 space-y-1">
+      <div>Created: `tests/auth.test.ts`</div>
+      <div>Test cases: 12</div>
+      <div class="text-emerald-400">Coverage: 95%</div>
+    </div>
+  </TerminalBlock>
+</Terminal>
+
+---
+
+## Pro Tips
+
+<ProTips>
+  <Tip title="Test Behavior">
+    Focus on what functions do, not implementation.
+  </Tip>
+  <Tip title="Edge Cases">
+    Always test errors, empty inputs, boundaries.
+  </Tip>
+</ProTips>
+
+---
+
+## Next Steps
+
+- Run `/test` to execute your test suite
+- See [Production Deployment](/guide/deployment/) which runs tests automatically

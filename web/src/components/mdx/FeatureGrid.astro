@@ -1,0 +1,19 @@
+---
+interface Props {
+  cols?: 2 | 3 | 4;
+}
+
+const { cols = 4 } = Astro.props;
+
+const colsClass = {
+  2: "grid-cols-1 sm:grid-cols-2",
+  3: "grid-cols-1 sm:grid-cols-2 md:grid-cols-3",
+  4: "grid-cols-1 sm:grid-cols-2 md:grid-cols-4",
+};
+---
+
+<div class="not-content rounded-xl border border-[var(--v-line)] bg-[var(--v-surface)] p-4 mb-8">
+  <div class={`grid gap-3.5 ${colsClass[cols]}`}>
+    <slot />
+  </div>
+</div>
